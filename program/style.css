@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'TarponMotel-webfont';
+    src: url('fonts/TarponMotel-webfont.eot') format('eot'),
+         url('fonts/TarponMotel-webfont.woff') format('woff'),
+         url('fonts/TarponMotel-webfont.svg') format('svg');
+}
+
+
+header{
+background-image:url("pictures/background.jpg");
+}
+
+h1{
+    font-family:'TarponMotel-webfont', Arial, "Arial black";
+    font-size:7em;
+    text-align:center;
+    color:rgb(250,250,250);
+}
+
+.thread{
+    border-top:1px grey solid;
+    border-left:1px grey solid;
+    border-radius:10px;
+    box-shadow:6px 6px 10px black;
+    background:rgb(230,230,230);
+    height:200px;
+    overflow:scroll;
+    text-align:center;
+  	font-size:1.5em;
+}
+
+footer{
+    border-top:2px grey solid;
+}
+
+#author{
+    font-size:1.5em;
+    text-align:center;
+}
+
+#logo_link{
+    width: 50%;
+    height: 50%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+img{
+    border-top:1px grey solid;
+    border-left:1px grey solid;
+}
+
