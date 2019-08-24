@@ -1,6 +1,10 @@
 
 $("button").on('click', function () {
-
-    $('#thread').append("<p> Utilisateur : "+ $('textarea').val() +" </p>");
-    $('textarea').val('').change();
+    var $textareaValueElt = $('textarea').val();
+    if ($textareaValueElt.length > 3) {
+ 	    $('#thread').append("<p> Utilisateur : "+ $textareaValueElt +" </p>");
+ 	    $('textarea').val('').change();
+    }else {
+  	    $('textarea').val('').change();
+    }
 });
