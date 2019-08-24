@@ -21,8 +21,9 @@ class CallApiMaps:
         """ Loading data of the A.P.I. Google Maps and convert to json """
         payload = {'center': self.place, 'zoom': '13', 'size': '600x300',
                    'maptype': 'roadmap', 'markers': 'color:blue%7Clabel:S%7C40.702147,-74.015794',
-                   'key': self.api_google_maps_key}
+                   'key': ''}
         request = requests.get("https://maps.googleapis.com/maps/api/staticmap?", params=payload)
+        print(request)
         data = request.json()
         return data
 
@@ -53,5 +54,5 @@ class CallApiWikipedia:
         else:
             print("la page n'existe pas")
 
-new_call=CallApiWikipedia()
+new_call=CallApiMaps()
 new_call.load_data()
