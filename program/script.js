@@ -1,5 +1,5 @@
 
 $("button").on('click', function () {
-    $('#thread').append(' Utilisateur : ' + $('textarea').val());
+    $('#thread').append("<p> Utilisateur : "+ $('textarea').val() +" </p>");
     $('textarea').val('').change();
 });
