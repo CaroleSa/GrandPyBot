@@ -26,7 +26,7 @@ h1{
     height:200px;
     overflow:scroll;
     text-align:left;
-  	font-size:1.5em;
+  	font-size:1em;
   	word-wrap:break-word;
 }
 
@@ -49,5 +49,9 @@ footer{
 img{
     border-top:1px grey solid;
     border-left:1px grey solid;
+}
+
+textarea{
+    height:70px;
 }
 
