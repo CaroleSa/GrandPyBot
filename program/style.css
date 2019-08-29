@@ -5,6 +5,19 @@
          url('fonts/TarponMotel-webfont.svg') format('svg');
 }
 
+#logoGrandPyBot{
+        float:left;
+        width:100px;
+        height:100px;
+}
+
+@media screen and (max-width : 693px)
+{
+      header{
+           margin:auto;
+      }
+}
+
 
 header{
     background-image:url("pictures/background.jpg");
@@ -32,6 +45,11 @@ h1{
 
 footer{
     border-top:2px grey solid;
+}
+
+#userName{
+    font-weight:bold;
+    color:rgb(200,56,100);
 }
 
 #author{

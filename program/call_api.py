@@ -54,5 +54,5 @@ class CallApiWikipedia:
         else:
             print("la page n'existe pas")
 
-new_call=CallApiMaps()
+new_call=CallApiWikipedia()
 new_call.load_data()
