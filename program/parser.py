@@ -13,14 +13,20 @@ masoupe = BeautifulSoup.BeautifulSoup(html, features="html.parser")"""
 class Parser:
 
     def __init__(self):
-        self.user_question = "Bonjour GrandPy Bot ! a Peux-tu me dire ou se trouve la a mairie de Caluire a et Cuire ?"
-        self.mot = ""
+        user_question = "Je ne sais pas quoi te dire à part que je cherche la poste à caluire"
+        # remove all capital letters
+        self.user_question = user_question.lower()
 
     def place_search(self):
+        # deleting symbols of the user question
+        symbols_list = ["-", "'", "_", ".", ",", ";", ":"]
+        for elt in symbols_list:
+            self.user_question = self.user_question.replace(elt, " ")
+
         # transforming the user's question into a list
         list_user_question = self.user_question.split()
 
-        #
+        # list of common words
         common_words = ["a", "abord", "absolument", "afin", "ah", "ai", "aie", "ailleurs", "ainsi", "ait", "allaient", "allo",
          "allons", "allô", "alors", "anterieur", "anterieure", "anterieures", "apres", "après", "as", "assez",
          "attendu", "au", "aucun", "aucune", "aujourd", "aujourd'hui", "aupres", "auquel", "aura", "auraient", "aurait",
@@ -76,13 +82,24 @@ class Parser:
          "vont", "vos", "votre", "vous", "vous-mêmes", "vu", "vé", "vôtre", "vôtres", "w", "x", "y", "z", "zut", "à",
          "â", "ça", "ès", "étaient", "étais", "était", "étant", "été", "être", "ô"]
 
-        i = 0
-        while i < len(common_words):
-            self.mot = common_words[i]
-            i += 1
-            if self.mot in list_user_question:
-                while self.mot in list_user_question:
-                    list_user_question.remove(self.mot)
+        # deleting the verbs and subjects of the user question
+        subject_list = ["je", "tu", "il", "nous", "vous", "ils"]
+        for elt in subject_list:
+            while elt in list_user_question:
+                verbs_index = list_user_question.index(elt) + 1
+                subject_index = list_user_question.index(elt)
+                del list_user_question[verbs_index]
+                del list_user_question[subject_index]
+
+        # deleting the common words of the user question
+        for elt in common_words:
+            while elt in list_user_question:
+                list_user_question.remove(elt)
+
+        # deleting the elements that contain one letter of the user question
+        for elt in list_user_question:
+            if len(elt) <= 1:
+                list_user_question.remove(elt)
 
 
         print(list_user_question)
