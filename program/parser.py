@@ -13,11 +13,13 @@ masoupe = BeautifulSoup.BeautifulSoup(html, features="html.parser")"""
 class Parser:
 
     def __init__(self):
-        user_question = "Je ne sais pas quoi te dire à part que je cherche la poste à caluire"
-        # remove all capital letters
-        self.user_question = user_question.lower()
+        self.user_question = "Salut toi ! peux-tu me dire quel endroit se trouve la part dieu à lyon ?"
+
 
     def place_search(self):
+        # remove all capital letters
+        self.user_question = self.user_question.lower()
+
         # deleting symbols of the user question
         symbols_list = ["-", "'", "_", ".", ",", ";", ":"]
         for elt in symbols_list:
@@ -68,7 +70,7 @@ class Parser:
          "quelconque", "quelle", "quelles", "quelqu'un", "quelque", "quelques", "quels", "qui", "quiconque", "quinze",
          "quoi", "quoique", "r", "rare", "rarement", "rares", "relative", "relativement", "remarquable", "rend",
          "rendre", "restant", "reste", "restent", "restrictif", "retour", "revoici", "revoilà", "rien", "s", "sa",
-         "sacrebleu", "sait", "sans", "sapristi", "sauf", "se", "sein", "seize", "selon", "semblable", "semblaient",
+         "sacrebleu", "sais", "sait", "sans", "sapristi", "sauf", "se", "sein", "seize", "selon", "semblable", "semblaient",
          "semble", "semblent", "sent", "sept", "septième", "sera", "seraient", "serait", "seront", "ses", "seul",
          "seule", "seulement", "si", "sien", "sienne", "siennes", "siens", "sinon", "six", "sixième", "soi", "soi-même",
          "soit", "soixante", "son", "sont", "sous", "souvent", "specifique", "specifiques", "speculatif", "stop",
