@@ -19,10 +19,16 @@ class CallApiMaps:
 
     def load_data(self):
         """ Loading data of the A.P.I. Google Maps and convert to json """
-        payload = {'center': self.place, 'zoom': '13', 'size': '600x300',
-                   'maptype': 'roadmap', 'markers': 'color:blue%7Clabel:S%7C40.702147,-74.015794',
-                   'key': ''}
-        request = requests.get("https://maps.googleapis.com/maps/api/staticmap?", params=payload)
+        URL = "https://maps.googleapis.com/maps/api/staticmap?"
+        PARAMS = {
+            'center': self.place,
+            'zoom': '13',
+            'size': '600x300',
+            'maptype': 'roadmap',
+            'markers': 'color:blue%7Clabel:S%7C40.702147,-74.015794',
+            'key': ''
+        }
+        request = requests.get(url=URL, params=PARAMS)
         print(request)
         data = request.json()
         return data
@@ -30,11 +36,12 @@ class CallApiMaps:
 
 class CallApiWikipedia:
     """ Call A.P.I. Wikipedia """
+
     def __init__(self):
         self.new_CallApiMaps = CallApiMaps()
         self.place = self.new_CallApiMaps.place
 
-    def load_data(self):
+    def get_place_history(self):
         """ Loading data of the A.P.I. Wikipedia and convert to json """
 
         # select language and format
@@ -54,5 +61,26 @@ class CallApiWikipedia:
         else:
             print("la page n'existe pas")
 
+    def get_place_coordonates(self):
+        """ Loading data of the A.P.I. Wikipedia and convert to json """
+
+        URL = "https://en.wikipedia.org/w/api.php"
+
+        PARAMS = {
+            "action": "query",
+            "format": "json",
+            "titles": "openclassrooms",
+            "prop": "coordinates"
+        }
+
+        request = requests.get(url=URL, params=PARAMS)
+        data = request.json()
+        print(data)
+        page = data['query']['pages']
+
+        for k, v in page.items():
+            print("Latitute: " + str(v['coordinates'][0]['lat']))
+            print("Longitude: " + str(v['coordinates'][0]['lon']))
+
 new_call=CallApiWikipedia()
-new_call.load_data()
+new_call.get_place_coordonates()
