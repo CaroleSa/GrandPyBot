@@ -18,6 +18,16 @@
       }
 }
 
+#map{
+    background:rgb(230,230,230);
+    height:290px;
+    background-image:url("pictures/background.jpg");
+}
+
+#space{
+    height:20px;
+}
+
 
 header{
     background-image:url("pictures/background.jpg");
