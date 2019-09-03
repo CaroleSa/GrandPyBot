@@ -19,24 +19,34 @@ class CallApiMaps:
         self.api_google_maps_key = ""
 
         # get place searched by user
-        new_parser = Parser()
+        new_parser = p.Parser()
         self.place = new_parser.place_searched[0]
 
-    def load_data(self):
+        self.address = ""
+        self.longitude = ""
+        self.latitude = ""
+
+    def get_place_coordonates(self):
         """ Loading data of the A.P.I. Google Maps and convert to json """
-        URL = "https://maps.googleapis.com/maps/api/staticmap?"
+
+        # request
+        URL = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
         PARAMS = {
-            'center': self.place,
-            'zoom': '13',
-            'size': '600x300',
-            'maptype': 'roadmap',
-            'markers': 'color:blue%7Clabel:S%7C40.702147,-74.015794',
-            'key': ''
+            'input': self.place,
+            'inputtype': 'textquery',
+            'fields': 'formatted_address,geometry',
+            'key': self.api_google_maps_key
         }
         request = requests.get(url=URL, params=PARAMS)
-        print(request)
+
+        # convert data to json format
         data = request.json()
-        return data
+
+        # get coordonates of the place
+        self.address = data['candidates'][0]["formatted_address"]
+        self.latitude = data['candidates'][0]["geometry"]["location"]['lat'] # 48.8 pour openclassrooms
+        self.longitude = data['candidates'][0]["geometry"]["location"]['lng'] # 2.35 pour openclassrooms
+
 
 
 class CallApiWikipedia:
@@ -46,6 +56,8 @@ class CallApiWikipedia:
         # get place searched by user
         new_parser = p.Parser()
         self.place = new_parser.place_searched[0]
+
+        self.place_history = ""
 
     def get_place_history(self):
         """ Loading data of the A.P.I. Wikipedia and convert to json """
@@ -59,34 +71,14 @@ class CallApiWikipedia:
         # select wikipedia page
         p_wiki = wiki.page(self.place)
 
-        # display the text if existing wikipedia page
+        # display the text if existing wikipedia page : place history
         if p_wiki.exists() is True:
-            print(p_wiki.summary)
+            self.place_history = p_wiki.summary
 
         # display the text if not existing wikipedia page
         else:
             print("la page n'existe pas")
 
-    def get_place_coordonates(self):
-        """ Loading data of the A.P.I. Wikipedia and convert to json """
 
-        URL = "https://en.wikipedia.org/w/api.php"
-
-        PARAMS = {
-            "action": "query",
-            "format": "json",
-            "titles": self.place,
-            "prop": "coordinates"
-        }
-
-        request = requests.get(url=URL, params=PARAMS)
-        data = request.json()
-        print(data)
-        page = data['query']['pages']
-
-        for k, v in page.items():
-            print("Latitute: " + str(v['coordinates'][0]['lat']))
-            print("Longitude: " + str(v['coordinates'][0]['lon']))
-
-new_call=CallApiWikipedia()
+new_call=CallApiMaps()
 new_call.get_place_coordonates()
