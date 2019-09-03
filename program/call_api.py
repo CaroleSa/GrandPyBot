@@ -8,14 +8,19 @@
 # import
 import requests
 import wikipediaapi
+from parser import Parser
 
 
 
 class CallApiMaps:
     """ Call A.P.I. Google maps """
+
     def __init__(self):
-        self.place = ""
         self.api_google_maps_key = ""
+
+        # get place searched by user
+        new_parser = Parser()
+        self.place = new_parser.place_searched[0]
 
     def load_data(self):
         """ Loading data of the A.P.I. Google Maps and convert to json """
@@ -38,8 +43,9 @@ class CallApiWikipedia:
     """ Call A.P.I. Wikipedia """
 
     def __init__(self):
-        self.new_CallApiMaps = CallApiMaps()
-        self.place = self.new_CallApiMaps.place
+        # get place searched by user
+        new_parser = p.Parser()
+        self.place = new_parser.place_searched[0]
 
     def get_place_history(self):
         """ Loading data of the A.P.I. Wikipedia and convert to json """
@@ -51,7 +57,7 @@ class CallApiWikipedia:
         )
 
         # select wikipedia page
-        p_wiki = wiki.page("lyon")
+        p_wiki = wiki.page(self.place)
 
         # display the text if existing wikipedia page
         if p_wiki.exists() is True:
@@ -69,7 +75,7 @@ class CallApiWikipedia:
         PARAMS = {
             "action": "query",
             "format": "json",
-            "titles": "openclassrooms",
+            "titles": self.place,
             "prop": "coordinates"
         }
 

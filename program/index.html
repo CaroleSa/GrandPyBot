@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Projet OC 7</title>
 </head>
+
 <body>
     <div class="container-fluid">
 
@@ -19,50 +20,38 @@
         </header>
 
         <section>
-            <div class="row" id=""><br/>
-
-                <div class="col-md-offset-1 col-md-2" id="map">
-                <img
-                src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap
-                    &markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318
-                    &markers=color:red%7Clabel:C%7C40.718217,-73.998284
-                    &key=">
-                </div>
+            <div class="row"><br/>
+                <div class="col-md-offset-0 col-md-4" id="map"></div>
+                <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
+                async defer></script>
 
                 <div class="row">
-                    <div id="thread" class="col-md-offset-1 col-md-4 col-xs-offset-2 col-xs-8"></div>
-                    <div id="space" class="col-md-offset-1 col-md-4 col-xs-offset-2 col-xs-8"></div>
-                    <textarea class="col-md-offset-1 col-md-4 col-xs-offset-2 col-xs-8" placeholder="J'écris ma question ici"></textarea>
+                    <div id="thread" class="col-md-offset-0 col-md-4 col-xs-offset-2 col-xs-8"></div>
+                    <div id="space" class="col-md-offset-0 col-md-4 col-xs-offset-2 col-xs-8"></div>
+                    <textarea class="col-md-offset-0 col-md-4 col-xs-offset-2 col-xs-8" placeholder="J'écris ma question ici"></textarea>
                 </div>
-
             </div>
 
             <div class="row"><br/>
-
                 <div class="col-md-offset-5 col-md-4 col-sm-offset-4 col-sm-4 col-xs-offset-3 col-xs-6">
                     <button class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-comment"></span>  Poser ma question </button>
                 </div>
-
             </div>
 
             <div class="row"><br/>
-
                 <div class="col-md-offset-4 col-md-4">correspond au logo de chargement</div>
-
             </div>
-
         </section>
 
         <section>
-            <div class="row"><br/>
-
-            </div>
+            <div class="row"><br/></div>
         </section><br/>
 
         <footer>
             <div class="row">
                 <p class="col-md-offset-5 col-md-2" id="author">Carole Sartori</p>
             </div>
+
             <div class="row">
                 <div id="logo_link">
                     <a href="https://github.com/CaroleSa" target="_blank">

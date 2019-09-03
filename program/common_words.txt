@@ -58,6 +58,7 @@ beau
 beaucoup
 bien
 bigre
+bot
 boum
 bravo
 brrr
@@ -218,6 +219,8 @@ floc
 font
 g
 gens
+grandpy
+grandpybot
 h
 ha
 hein
@@ -408,6 +411,7 @@ puis
 puisque
 pur
 pure
+py
 q
 qu
 quand
