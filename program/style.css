@@ -24,6 +24,14 @@
 
 }
 
+.container-fluid {
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
 #logoGrandPyBot{
         float:left;
         width:75px;
@@ -90,8 +98,7 @@ h1{
 }
 
 footer{
-    border-top:2px grey solid;
-    box-shadow:5px 5px 5px black;
+    border-top:4px white solid;
 
 }
 
@@ -102,23 +109,37 @@ footer{
 
 #author{
     font-size:1.5em;
-    text-align:center;
+    text-align:left;
 }
 
 #logo_link{
-    width: 50%;
-    height: 50%;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-img{
-    border-top:1px grey solid;
-    border-left:1px grey solid;
+    float:right;
 }
 
 textarea{
     height:70px;
+    border-top:1px grey solid;
+    border-left:1px grey solid;
+    border-radius:10px;
+
 
 }
+
+@media screen and (max-width : 1300px)
+{
+    body{
+    background-image:url("pictures/fond2.png");
+    background-size: cover;
+    }
+}
+
+@media screen and (max-width : 700px)
+{
+    body{
+    background-image:url("pictures/fond1.png");
+    background-size: cover;
+    }
+}
+
+
 
