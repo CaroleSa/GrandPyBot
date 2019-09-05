@@ -1,17 +1,18 @@
 #! /usr/bin/env python3
 # coding: UTF-8
 
+""" views of the application """
 
-# imports
+# import library
 from flask import Flask, render_template
 
 
+# import of the configuration variables
+APP = Flask(__name__)
+APP.config.from_object('config')
 
-# import des variables de configuration
-app = Flask(__name__)
-app.config.from_object('config')
 
-# affiche le résultat du fichier html sur la page web
-@app.route('/')
+@APP.route('/')
 def index():
+    """ display the html web page """
     return render_template('index.html')

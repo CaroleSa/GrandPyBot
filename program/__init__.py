@@ -3,4 +3,6 @@
 
 
 # import de la variable app à partir du fichier view
-from .views import app
+from program.views import APP
+
+

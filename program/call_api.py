@@ -8,7 +8,7 @@
 # import
 import requests
 import wikipediaapi
-from parser import Parser
+import program.parser as p
 
 
 
@@ -30,23 +30,23 @@ class CallApiMaps:
         """ Loading data of the A.P.I. Google Maps and convert to json """
 
         # request
-        URL = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
-        PARAMS = {
+        url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
+        params = {
             'input': self.place,
             'inputtype': 'textquery',
             'fields': 'formatted_address,geometry',
             'key': self.api_google_maps_key
         }
-        request = requests.get(url=URL, params=PARAMS)
+        request = requests.get(url=url, params=params)
 
         # convert data to json format
         data = request.json()
 
         # get coordonates of the place
         self.address = data['candidates'][0]["formatted_address"]
-        self.latitude = data['candidates'][0]["geometry"]["location"]['lat'] # 48.8 pour openclassrooms
-        self.longitude = data['candidates'][0]["geometry"]["location"]['lng'] # 2.35 pour openclassrooms
-
+        self.latitude = data['candidates'][0]["geometry"]["location"]['lat']
+        self.longitude = data['candidates'][0]["geometry"]["location"]['lng']
+        # 48.8 pour openclassrooms 2.35
 
 
 class CallApiWikipedia:
@@ -80,5 +80,5 @@ class CallApiWikipedia:
             print("la page n'existe pas")
 
 
-new_call=CallApiMaps()
-new_call.get_place_coordonates()
+NEW_CALL = CallApiMaps()
+NEW_CALL.get_place_coordonates()
