@@ -1,3 +1,7 @@
+#! /usr/bin/env python3
+# coding: UTF-8
+
+
 import program.call_api as ca
 
 import urllib.request
@@ -18,4 +22,4 @@ def test_callapimaps(monkeypatch):
     new_callapimaps = ca.CallApiMaps()
     longitude = new_callapimaps.longitude
     latitude = new_callapimaps.latitude
-    assert [{latitude, longitude}] == results
+    assert [{"lat": latitude, "lng": longitude}] == results

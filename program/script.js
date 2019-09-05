@@ -8,15 +8,19 @@ function getQuestionInThread() {
     }
 }
 
-$("button").on('click', function () {
-    getQuestionInThread();
-});
+
+
+
 
 $("textarea").keyup(function(e) {
     if (e.keyCode == 13) {
         getQuestionInThread();
+        $('textarea').val('').change();
     }
 });
+
+
+
 
 
 var map;
@@ -28,7 +32,6 @@ function initMap() {
 }
 
 initMap();
-
 
 
 

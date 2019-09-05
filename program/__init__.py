@@ -5,4 +5,3 @@
 # import de la variable app à partir du fichier view
 from program.views import APP
 
-
