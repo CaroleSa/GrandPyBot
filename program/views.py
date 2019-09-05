@@ -5,7 +5,7 @@
 
 # import library
 from flask import Flask, render_template, request
-import program.parser as p
+
 
 
 # import of the configuration variables

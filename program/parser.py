@@ -36,6 +36,3 @@ class Parser:
 
         print(list_user_question)
         return list_user_question
-
-new_parser = Parser()
-new_parser.get_place_searched("je recherche la ville de lyon")
