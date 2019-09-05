@@ -2,10 +2,12 @@
 # coding: UTF-8
 
 
-import program.call_api as ca
+
 import urllib.request
 from io import BytesIO
 import json
+
+import program.call_api as ca
 
 
 def test_get_place_history():
@@ -14,15 +16,16 @@ def test_get_place_history():
     assert results[0:24] == "Toulouse est une commune"
 
 
-"""def test_callapimaps(monkeypatch):
+def test_get_place_coordonates(monkeypatch):
+    results = ('Toulouse, France', 43.604652, 1.444209)
 
     def mockreturn(request):
-        return results
+        return BytesIO(json.dumps(results).encode())
 
-    monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
+    url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
+    monkeypatch.setattr(urllib.request, url, mockreturn)
 
     new_callapimaps = ca.CallApiMaps()
-    results = new_callapimaps.get_place_coordonates("toulouse")
+    result = new_callapimaps.get_place_coordonates("toulouse")
 
-    assert ('Toulouse, France', 43.604652, 1.444209) == results"""
-
+    assert result == results
