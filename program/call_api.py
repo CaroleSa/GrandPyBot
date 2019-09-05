@@ -37,7 +37,6 @@ class CallApiMaps:
         address = data['candidates'][0]["formatted_address"]
         latitude = data['candidates'][0]["geometry"]["location"]['lat']
         longitude = data['candidates'][0]["geometry"]["location"]['lng']
-        # 48.8 pour openclassrooms 2.35
 
         return address, latitude, longitude
 
@@ -60,10 +59,8 @@ class CallApiWikipedia:
         # display the text if existing wikipedia page : place history
         if p_wiki.exists() is True:
             place_history = p_wiki.summary
-
             return place_history
 
         # display the text if not existing wikipedia page
         else:
-
             return "la page n'existe pas"

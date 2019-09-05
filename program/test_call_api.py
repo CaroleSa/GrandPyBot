@@ -9,10 +9,6 @@ from io import BytesIO
 import json
 
 def test_callapimaps(monkeypatch):
-    results = [{
-            "lat": 48.8,
-            "lng": 2.35
-          }]
 
     def mockreturn(request):
         return results
@@ -20,6 +16,7 @@ def test_callapimaps(monkeypatch):
     monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
 
     new_callapimaps = ca.CallApiMaps()
-    longitude = new_callapimaps.longitude
-    latitude = new_callapimaps.latitude
-    assert [{"lat": latitude, "lng": longitude}] == results
+    results = new_callapimaps.get_place_coordonates("toulouse")
+
+    assert ('Toulouse, France', 43.604652, 1.444209) == results
+
