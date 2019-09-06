@@ -5,6 +5,7 @@
 
 # import library
 from flask import Flask, render_template, request
+import program.controller as c
 
 
 
@@ -24,11 +25,11 @@ def process():
     if "search" in request.form:
         question = request.form["search"]
 
-        # parser la question et récupérer le lieu recherché
-        new_parser = p.Parser()
-        place = new_parser.get_place_searched(question)
+        # parser la question et récupérer les informations du lieu recherché
+        new_controller = c.Controller()
+        place_info = new_controller.get_place_info(question)
 
-        return jsonify(dict(results=place))
+        return jsonify(dict(results=place_info))
 
 
 """if __name__ == "__main__":
