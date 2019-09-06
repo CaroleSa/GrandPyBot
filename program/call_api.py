@@ -32,6 +32,7 @@ class CallApiMaps:
 
         # convert data to json format
         data = request.json()
+        print(data)
 
         return data
 
