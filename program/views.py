@@ -4,7 +4,7 @@
 """ views of the application """
 
 # import library
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import program.controller as c
 
 
@@ -22,15 +22,15 @@ def index():
 @APP.route("/process", methods=["POST"])
 def process():
     # récupérer la question de l'utilisateur
-    if "search" in request.form:
-        question = request.form["search"]
+    if "question" in request.textarea:
+        question = request.textarea["question"]
         print(question)
 
         # parser la question et récupérer les informations du lieu recherché
         new_controller = c.Controller()
         place_info = new_controller.get_place_info(question)
 
-        return jsonify(dict(results=place_info))
+        return jsonify(place_info)
 
 
 process()
