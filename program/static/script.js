@@ -17,11 +17,6 @@ $("textarea").keyup(function(e) {
         getQuestionInThread();
         $('textarea').val('').change();
     }
-    $.ajax({
-       url : '../templates/index.html', // La ressource ciblée
-       type : 'POST', // Le type de la requête HTTP.
-       data : $('textarea').val()
-    });
 });
 
 
@@ -39,4 +34,21 @@ function initMap() {
 initMap();
 
 
-
+$(function(){
+	$("textarea").keyup(function(e) {
+    if (e.keyCode == 13) {
+		var $textareaValueElt = $('textarea').val();
+		$.ajax({
+			url: '/process',
+			data: $('textarea').serialize(),
+			type: 'POST',
+			success: function(response){
+				console.log(response);
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	}
+	});
+});
