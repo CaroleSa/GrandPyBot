@@ -24,6 +24,7 @@ def process():
     # récupérer la question de l'utilisateur
     if "search" in request.form:
         question = request.form["search"]
+        print(question)
 
         # parser la question et récupérer les informations du lieu recherché
         new_controller = c.Controller()
@@ -32,5 +33,6 @@ def process():
         return jsonify(dict(results=place_info))
 
 
+process()
 """if __name__ == "__main__":
     APP.run()"""

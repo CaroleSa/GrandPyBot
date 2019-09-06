@@ -17,6 +17,11 @@ $("textarea").keyup(function(e) {
         getQuestionInThread();
         $('textarea').val('').change();
     }
+    $.ajax({
+       url : '../templates/index.html', // La ressource ciblée
+       type : 'POST', // Le type de la requête HTTP.
+       data : $('textarea').val()
+    });
 });
 
 
