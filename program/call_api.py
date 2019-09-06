@@ -20,7 +20,7 @@ class CallApiMaps:
     def get_place_data(self, place):
         """ Loading data of the A.P.I. Google Maps and convert to json """
 
-        # request
+        # request and getting place data
         url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
         params = {
             'input': place,
@@ -36,8 +36,8 @@ class CallApiMaps:
         return data
 
     def get_place_coordonates(self, data):
+        """ get coordonates of the place """
 
-        # get coordonates of the place
         address = data['candidates'][0]["formatted_address"]
         latitude = data['candidates'][0]["geometry"]["location"]['lat']
         longitude = data['candidates'][0]["geometry"]["location"]['lng']

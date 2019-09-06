@@ -34,14 +34,15 @@ def test_get_place_data(monkeypatch):
 
     # Any arguments may be passed and mock_get() will always return our
     # mocked object, which only has the .json() method.
-    def mock_get(*args, **kwargs):
+    def mockreturn(*args, **kwargs):
         return MockResponse()
 
     # apply the monkeypatch for requests.get to mock_get
-    monkeypatch.setattr(requests, "get", mock_get)
+    monkeypatch.setattr(requests, "get", mockreturn)
 
     # app.get_json, which contains requests.get, uses the monkeypatch
     new_callapimaps = ca.CallApiMaps()
     result = new_callapimaps.get_place_data("toulouse")
     assert result["mock_key"] == "mock_response"
+
 
