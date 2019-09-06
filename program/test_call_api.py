@@ -30,7 +30,7 @@ class MockResponse:
         return {"mock_key": "mock_response"}
 
 
-def test_get_place_coordonates(monkeypatch):
+def test_get_place_data(monkeypatch):
 
     # Any arguments may be passed and mock_get() will always return our
     # mocked object, which only has the .json() method.
