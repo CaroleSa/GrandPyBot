@@ -64,3 +64,6 @@ class CallApiWikipedia:
         # display the text if not existing wikipedia page
         else:
             return "la page n'existe pas"
+
+new = CallApiMaps()
+new.get_place_coordonates("toulouse")

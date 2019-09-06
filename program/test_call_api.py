@@ -22,8 +22,7 @@ def test_get_place_coordonates(monkeypatch):
     def mockreturn(request):
         return BytesIO(json.dumps(results).encode())
 
-    url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
-    monkeypatch.setattr(urllib.request, url, mockreturn)
+    monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
 
     new_callapimaps = ca.CallApiMaps()
     result = new_callapimaps.get_place_coordonates("toulouse")
