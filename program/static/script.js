@@ -1,11 +1,7 @@
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
-    if ($textareaValueElt.length > 3) {
- 	    $('#thread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
- 	    $('textarea').val('').change();
-    }else {
-  	    $('textarea').val('').change();
-    }
+    $('#thread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
+ 	$('textarea').val('').change();
 }
 
 var map;
@@ -42,12 +38,22 @@ function answerError() {
 $("button").on('click', function () {
     getQuestionInThread();
     answerError();
+    $.ajax({
+			data : {question: $('textarea').val()},
+			type : 'POST',
+			url : '/process'
+		})
 });
 
 $("textarea").keyup(function(e) {
     if (e.keyCode == 13) {
         getQuestionInThread();
         answerError();
+    $.ajax({
+			data : {question: $('textarea').val()},
+			type : 'POST',
+			url : '/process'
+		})
     }
 });
 

@@ -36,15 +36,6 @@ class CallApiMaps:
 
         return data
 
-    def get_place_coordinates(self, data):
-        """ get coordinates of the place """
-
-        address = data['candidates'][0]["formatted_address"]
-        latitude = data['candidates'][0]["geometry"]["location"]['lat']
-        longitude = data['candidates'][0]["geometry"]["location"]['lng']
-
-        return address, latitude, longitude
-
 
 class CallApiWikipedia:
     """ Call A.P.I. Wikipedia """
