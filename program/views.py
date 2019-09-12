@@ -46,11 +46,8 @@ def process():
     latitude = data['candidates'][0]["geometry"]["location"]['lat']
     longitude = data['candidates'][0]["geometry"]["location"]['lng']
     history = new_call_api_wiki.get_place_history(place_searched)
-    link =
-
     return jsonify({'latitude': latitude, 'longitude': longitude,
-                    'address': address, 'history': history,
-                    'link': link})
+                    'address': address, 'history': history)
 
 """if __name__ == "__main__":
     APP.run()"""
