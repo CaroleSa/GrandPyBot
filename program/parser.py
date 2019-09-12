@@ -32,4 +32,3 @@ class Parser:
 
 #new_parser = Parser()
 #new_parser.get_place_searched("merci de m'indiquer l'endroit ou se trouve la ville de caluire")
-

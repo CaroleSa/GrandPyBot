@@ -39,13 +39,15 @@ function answerError() {
 }
 
 
-
+$("button").on('click', function () {
+    getQuestionInThread();
+    answerError();
+});
 
 $("textarea").keyup(function(e) {
     if (e.keyCode == 13) {
         getQuestionInThread();
         answerError();
-        $('textarea').val('').change();
     }
 });
 
