@@ -23,7 +23,7 @@ class Controller:
         new_call_api_maps = ca.CallApiMaps()
         new_call_api_wiki = ca.CallApiWikipedia()
         data = new_call_api_maps.get_place_data(place_searched)
-        coordonates = new_call_api_maps.get_place_coordonates(data)
+        coordinates = new_call_api_maps.get_place_coordinates(data)
         history = new_call_api_wiki.get_place_history(place_searched)
 
-        return coordonates, history
+        return coordinates, history
