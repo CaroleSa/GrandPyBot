@@ -22,17 +22,14 @@ def index():
 @APP.route("/process", methods=["POST"])
 def process():
     # récupérer la question de l'utilisateur
-    if "question" in request.textarea:
-        question = request.textarea["question"]
-        print(question)
+    question = request.form["test"]
+    print(question)
 
-        # parser la question et récupérer les informations du lieu recherché
-        new_controller = c.Controller()
-        place_info = new_controller.get_place_info(question)
+    # parser la question et récupérer les informations du lieu recherché
+    new_controller = c.Controller()
+    place_info = new_controller.get_place_info(question)
 
-        return jsonify(place_info)
+    return jsonify(place_info)
 
-
-process()
 """if __name__ == "__main__":
     APP.run()"""

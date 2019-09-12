@@ -1,27 +1,12 @@
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
     if ($textareaValueElt.length > 3) {
- 	    $('#thread').append("<p><span id='userName'><br> Utilisateur : </span>"+ $textareaValueElt +" </p>");
+ 	    $('#thread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
  	    $('textarea').val('').change();
     }else {
   	    $('textarea').val('').change();
     }
 }
-
-
-
-
-
-$("textarea").keyup(function(e) {
-    if (e.keyCode == 13) {
-        getQuestionInThread();
-        $('textarea').val('').change();
-    }
-});
-
-
-
-
 
 var map;
 function initMap() {
@@ -31,24 +16,39 @@ function initMap() {
     });
 }
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+
+function answerError() {
+    
+    var $place = $('textarea').val();
+    console.log($place.length);
+    
+    
+    if ($place.length > 5) {
+        var $answersUnknownPlace = "Je ne sais pas où ça se trouve, il semble que ma mémoire me joue des tours !";
+ 	    $('#thread').append("<p><span id='robotName'> GrandPyBot : <br></span>" + $answersUnknownPlace + "</p>");
+    }else {
+        const $answersNoPlace = ["Quel endroit cherches-tu ? Je ne comprends pas ...", "Hein ? Quoi ?", "Peux-tu vérifier ton orthographe s'il te plait ?"];
+        var $randomNumber = getRandomInt($answersNoPlace.length);
+        var $answer = $answersNoPlace[$randomNumber];
+  	    $('#thread').append("<p><span id='robotName'> GrandPyBot : <br></span>" + $answer + "</p>");
+    }
+}
+
+
+
+
+$("textarea").keyup(function(e) {
+    if (e.keyCode == 13) {
+        getQuestionInThread();
+        answerError();
+        $('textarea').val('').change();
+    }
+});
+
+
 initMap();
 
-
-$(function(){
-	$("textarea").keyup(function(e) {
-    if (e.keyCode == 13) {
-		var $textareaValueElt = $('textarea').val();
-		$.ajax({
-			url: '/process',
-			data: $('textarea').serialize(),
-			type: 'POST',
-			success: function(response){
-				console.log(response);
-			},
-			error: function(error){
-				console.log(error);
-			}
-		});
-	}
-	});
-});

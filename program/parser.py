@@ -27,12 +27,9 @@ class Parser:
                 while word in list_user_question:
                     list_user_question.remove(word)
 
-        with open("liste_francais.txt", "r") as f:
-            file = f.readlines()
-            for word in file:
-                word = word.replace("\n", "")
-                while word in list_user_question:
-                    list_user_question.remove(word)
-
         print(list_user_question)
         return list_user_question
+
+#new_parser = Parser()
+#new_parser.get_place_searched("merci de m'indiquer l'endroit ou se trouve la ville de caluire")
+

@@ -42,6 +42,10 @@
 
 #map{
     height:290px;
+    border-left: 5px white inset;
+    border-right: 5px white inset;
+    border-top: 5px white inset;
+    border-bottom: 5px white inset;
 }
 
 #space{
@@ -105,6 +109,11 @@ footer{
 #userName{
     font-weight:bold;
     color:rgb(200,56,100);
+}
+
+#robotName{
+    font-weight:bold;
+    color:rgb(0,162,232);
 }
 
 #author{
