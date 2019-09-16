@@ -13,19 +13,23 @@ function getQuestionInThread() {
 	    if(data.error){
 				$('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
 		}else{
-                $('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "</p>");
+                $('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>Voici l'adresse de "
+                + data.place + " :<br> " + data.address + ". <br>D'ailleurs ! Sais-tu que je connais très bien cet endroit ?</p>"
+                + data.history + "<br>Désolé ! Je suis un peu bavard ... <br>Regardes ici, si tu veux en savoir plus !" + data.link + "<br>Voici la carte où il se trouve !</p>");
+                var map;
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: data.latitude, lng: data.longitude},
+                    zoom: 8
+                    });
+                }
+                initMap();
              }
     });
  	$('textarea').val('').change();
 }
 
-var map;
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8
-    });
-}
+
 
 
 $("button").on('click', function () {
@@ -50,6 +54,6 @@ $("textarea").keyup(function(e) {
     }
 });
 
-initMap();
+
 
 

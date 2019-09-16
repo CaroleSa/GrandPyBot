@@ -41,7 +41,6 @@ def process():
     if not data:
         return jsonify({'error': "Je ne connais pas cet endroit"})
 
-
     address = data['candidates'][0]["formatted_address"]
     latitude = data['candidates'][0]["geometry"]["location"]['lat']
     longitude = data['candidates'][0]["geometry"]["location"]['lng']
@@ -49,4 +48,3 @@ def process():
 
     return jsonify({'latitude': latitude, 'longitude': longitude,
                     'address': address, 'history': history)
-
