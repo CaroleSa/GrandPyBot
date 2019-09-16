@@ -32,7 +32,6 @@ class CallApiMaps:
 
         # convert data to json format
         data = request.json()
-        print(data)
 
         return data
 
@@ -40,23 +39,33 @@ class CallApiMaps:
 class CallApiWikipedia:
     """ Call A.P.I. Wikipedia """
 
-    def get_place_history(self, place):
-        """ Loading data of the A.P.I. Wikipedia and convert to json """
-
+    def __init__(self):
         # select language and format
-        wiki = wikipediaapi.Wikipedia(
+        self.wiki = wikipediaapi.Wikipedia(
             language='fr',
             extract_format=wikipediaapi.ExtractFormat.WIKI
         )
 
+    def get_place_history(self, place):
+        """ Loading data of the A.P.I. Wikipedia """
         # select wikipedia page
-        p_wiki = wiki.page(place)
+        p_wiki = self.wiki.page(place)
 
         # display the text if existing wikipedia page : place history
         if p_wiki.exists() is True:
+            # get the page link
+            url = p_wiki.fullurl
+
+            # get the description of the place
             place_history = p_wiki.summary
+            # get index of the point
+            index = place_history.find(".", 400)
+            # reduction of the description, add comment and link
+            place_history = p_wiki.summary[:index + 1] + " Désolé ! je suis un peu bavard ! Regarde ici, si tu veux en savoir plus : " + url
+
             return place_history
 
         # display the text if not existing wikipedia page
         else:
-            return "la page n'existe pas"
+            message = "Pas de données"
+            return message

@@ -3,8 +3,8 @@
 
 
 # import de la variable app à partir du fichier __init__
-from program import app
+from program import APP
 
 # point d'entrée du programme
 if __name__ == "__main__":
-    app.run(debug=True)
+    APP.run(debug=True)

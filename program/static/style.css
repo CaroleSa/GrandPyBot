@@ -8,7 +8,6 @@
          url('../fonts/Amadeus-webfont.svg#amadeusregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -21,7 +20,6 @@
          url('../fonts/saxmono-webfont.svg#saxmonoregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 .container-fluid {
@@ -31,14 +29,11 @@
   margin-left: auto;
 }
 
-
 #logoGrandPyBot{
         float:left;
         width:75px;
         height:100px;
 }
-
-
 
 #map{
     height:200px;
@@ -47,21 +42,16 @@
     border-right: 5px white inset;
     border-top: 5px white inset;
     border-bottom: 5px white inset;
-
 }
 
 #space{
    padding-bottom:20px;
 }
 
-
 body{
     background-image:url("../images/fond1.png");
     background-size: cover;
-
 }
-
-
 
 #pyTitle{
     color:rgb(53,87,202);
@@ -82,8 +72,6 @@ h1{
     text-align:center;
     font-size:1.5em;
     color:rgb(255,255,255);
-
-
 }
 
 #thread{
@@ -101,8 +89,8 @@ h1{
     text-align:left;
   	font-size:1em;
   	word-wrap:break-word;
-
 }
+
 
 #rowMap{
     width : 230px;
@@ -111,7 +99,6 @@ h1{
 
 footer{
     border-top:4px white solid;
-
 }
 
 #userName{
@@ -160,6 +147,3 @@ textarea{
     background-size: cover;
     }
 }
-
-
-

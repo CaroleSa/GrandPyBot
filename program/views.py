@@ -32,22 +32,20 @@ def process():
     new_parser = p.Parser()
     place_searched = new_parser.get_place_searched(question)
     if not place_searched:
-        return jsonify({'error' : "Je n'ai pas compris ta question."})
+        return jsonify({'error': "Je n'ai pas compris ta question."})
 
     # get place searched informations
     new_call_api_maps = ca.CallApiMaps()
     new_call_api_wiki = ca.CallApiWikipedia()
     data = new_call_api_maps.get_place_data(place_searched)
     if not data:
-        return jsonify({'error': "Je connais cet endroit, mais " +
-                                 "je ne sais plus où c'est."})
+        return jsonify({'error': "Je ne connais pas cet endroit"})
 
     address = data['candidates'][0]["formatted_address"]
     latitude = data['candidates'][0]["geometry"]["location"]['lat']
     longitude = data['candidates'][0]["geometry"]["location"]['lng']
     history = new_call_api_wiki.get_place_history(place_searched)
+    print({'latitude': latitude, 'longitude': longitude,
+                    'address': address, 'history': history})
     return jsonify({'latitude': latitude, 'longitude': longitude,
                     'address': address, 'history': history)
-
-"""if __name__ == "__main__":
-    APP.run()"""

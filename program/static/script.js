@@ -1,7 +1,20 @@
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
     $('#thread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
- 	$('textarea').val('').change();
+
+
+
+    $('textarea').val('').change();
+    $.ajax({
+			data : {question: $('textarea').val()},
+			type : 'POST',
+			url : '/process'
+	})
+	.done(function(data) {
+
+            $('#thread').append("<p><span id='robotName'> GrandPyBot : <br></span>" + data.error + "</p>");
+    });
+
 }
 
 var map;
@@ -12,32 +25,10 @@ function initMap() {
     });
 }
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-
-
-function answerError() {
-    
-    var $place = $('textarea').val();
-    console.log($place.length);
-    
-    
-    if ($place.length > 5) {
-        var $answersUnknownPlace = "Je ne sais pas où ça se trouve, il semble que ma mémoire me joue des tours !";
- 	    $('#thread').append("<p><span id='robotName'> GrandPyBot : <br></span>" + $answersUnknownPlace + "</p>");
-    }else {
-        const $answersNoPlace = ["Quel endroit cherches-tu ? Je ne comprends pas ...", "Hein ? Quoi ?", "Peux-tu vérifier ton orthographe s'il te plait ?"];
-        var $randomNumber = getRandomInt($answersNoPlace.length);
-        var $answer = $answersNoPlace[$randomNumber];
-  	    $('#thread').append("<p><span id='robotName'> GrandPyBot : <br></span>" + $answer + "</p>");
-    }
-}
-
 
 $("button").on('click', function () {
     getQuestionInThread();
-    answerError();
+
     $.ajax({
 			data : {question: $('textarea').val()},
 			type : 'POST',
@@ -48,7 +39,7 @@ $("button").on('click', function () {
 $("textarea").keyup(function(e) {
     if (e.keyCode == 13) {
         getQuestionInThread();
-        answerError();
+
     $.ajax({
 			data : {question: $('textarea').val()},
 			type : 'POST',
@@ -56,7 +47,6 @@ $("textarea").keyup(function(e) {
 		})
     }
 });
-
 
 initMap();
 
