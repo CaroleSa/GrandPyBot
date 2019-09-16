@@ -1,9 +1,8 @@
 
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
-    $('#thread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
 
-
+    $('#messageThread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
 
     $.ajax({
 			data : {question: $('textarea').val()},
@@ -12,9 +11,9 @@ function getQuestionInThread() {
 	})
 	.done(function(data) {
 	    if(data.error){
-				$('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
+				$('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
 		}else{
-                $('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>Voici l'adresse de "
+                $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>Voici l'adresse de "
                 + data.place + " :<br> "
                 + data.address + ". <br>D'ailleurs ! Sais-tu que je connais très bien cet endroit ?<br>"
                 + data.history + "<br>Désolé ! Je suis un peu bavard ... <br>Regardes ici, si tu veux en savoir plus : "
