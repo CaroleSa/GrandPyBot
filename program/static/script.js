@@ -10,7 +10,11 @@ function getQuestionInThread() {
 			url : '/process'
 	})
 	.done(function(data) {
-          $('#thread').append("<p><span id='userName'> Carole : <br></span>" + $textareaValueElt + "</p>");
+	    if(data.error){
+				$('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
+		}else{
+                $('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "</p>");
+             }
     });
  	$('textarea').val('').change();
 }
