@@ -4,24 +4,15 @@ function getQuestionInThread() {
 
 
 
-
-    $('textarea').val('').change();
-
-
     $.ajax({
 			data : {question: $('textarea').val()},
 			type : 'POST',
 			url : '/process'
 	})
 	.done(function(data) {
-            if(data.error){
-                $('#thread').append("<p><span id='robotName'> GrandPyBot : <br></span>" + data.error + "</p>");
-            }else{
-                $('#thread').append("<p><span id='robotName'> GrandPyBot : <br></span>" + data.address + "</p>");
-                }
-            $('textarea').val('').change();
+          $('#thread').append("<p><span id='userName'> Carole : <br></span>" + $textareaValueElt + "</p>");
     });
-
+ 	$('textarea').val('').change();
 }
 
 var map;
@@ -56,4 +47,5 @@ $("textarea").keyup(function(e) {
 });
 
 initMap();
+
 
