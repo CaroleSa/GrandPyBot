@@ -16,9 +16,8 @@ function getQuestionInThread() {
                 $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>Voici l'adresse de "
                 + data.place + " :<br> "
                 + data.address + ". <br>D'ailleurs ! Sais-tu que je connais très bien cet endroit ?<br>"
-                + data.history + "<br>Désolé ! Je suis un peu bavard ... <br>Regardes ici, si tu veux en savoir plus : "
-                + data.url + "<br>Voici la carte où ça se trouve !</p>");
-
+                + data.history + "<br>Désolé ! Je suis un peu bavard ... <br>Regardes ici, si tu veux en savoir plus : <a href ="
+                + data.url + " target = '_blank'>ICI</a><br>Voici la carte où ça se trouve !</p>");
                 var map;
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
