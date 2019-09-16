@@ -4,15 +4,22 @@ function getQuestionInThread() {
 
 
 
+
     $('textarea').val('').change();
+
+
     $.ajax({
 			data : {question: $('textarea').val()},
 			type : 'POST',
 			url : '/process'
 	})
 	.done(function(data) {
-
-            $('#thread').append("<p><span id='robotName'> GrandPyBot : <br></span>" + data.error + "</p>");
+            if(data.error){
+                $('#thread').append("<p><span id='robotName'> GrandPyBot : <br></span>" + data.error + "</p>");
+            }else{
+                $('#thread').append("<p><span id='robotName'> GrandPyBot : <br></span>" + data.address + "</p>");
+                }
+            $('textarea').val('').change();
     });
 
 }

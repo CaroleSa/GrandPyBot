@@ -45,7 +45,6 @@ def process():
     latitude = data['candidates'][0]["geometry"]["location"]['lat']
     longitude = data['candidates'][0]["geometry"]["location"]['lng']
     history = new_call_api_wiki.get_place_history(place_searched)
-    print({'latitude': latitude, 'longitude': longitude,
-                    'address': address, 'history': history})
+
     return jsonify({'latitude': latitude, 'longitude': longitude,
                     'address': address, 'history': history)
