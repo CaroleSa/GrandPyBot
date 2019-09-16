@@ -27,6 +27,12 @@ function getQuestionInThread() {
                     });
                 }
                 initMap();
+                $('#map').css('height','200px');
+                $('#map').css('width','430px');
+                $('#map').css('border-left','5px white inset');
+                $('#map').css('border-right',' 5px white inset');
+                $('#map').css('border-top',' 5px white inset');
+                $('#map').css('border-bottom',' 5px white inset');
              }
     });
  	$('textarea').val('').change();
