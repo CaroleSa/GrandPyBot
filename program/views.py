@@ -41,10 +41,16 @@ def process():
     if not data:
         return jsonify({'error': "Je ne connais pas cet endroit"})
 
-    address = data['candidates'][0]["formatted_address"]
-    latitude = data['candidates'][0]["geometry"]["location"]['lat']
-    longitude = data['candidates'][0]["geometry"]["location"]['lng']
-    history = new_call_api_wiki.get_place_history(place_searched)
+    else:
+        address = data['candidates'][0]["formatted_address"]
+        latitude = data['candidates'][0]["geometry"]["location"]['lat']
+        longitude = data['candidates'][0]["geometry"]["location"]['lng']
+        history = new_call_api_wiki.get_place_history(place_searched)[0]
+        url = new_call_api_wiki.get_place_history(place_searched)[1]
 
-    return jsonify({'latitude': latitude, 'longitude': longitude,
-                    'address': address, 'history': history)
+        return jsonify({'latitude': latitude, 'longitude': longitude,
+                        'address': address, 'history': history,
+                        'url': url, 'place': place_searched})
+
+if __name__ == "__main__":
+    APP.run()
