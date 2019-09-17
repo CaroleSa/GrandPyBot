@@ -1,3 +1,4 @@
+$('#loader').hide();
 
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
@@ -10,6 +11,7 @@ function getQuestionInThread() {
 			url : '/process'
 	})
 	.done(function(data) {
+	    $('#loader').hide();
 	    if(data.error){
 				$('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
 		}else{
@@ -41,6 +43,7 @@ function getQuestionInThread() {
 
 
 $("button").on('click', function () {
+    $('#loader').show();
     getQuestionInThread();
 
     $.ajax({
@@ -52,6 +55,7 @@ $("button").on('click', function () {
 
 $("textarea").keyup(function(e) {
     if (e.keyCode == 13) {
+        $('#loader').show();
         getQuestionInThread();
 
     $.ajax({

@@ -123,6 +123,11 @@ textarea{
     text-align:center;
 }
 
+#loader{
+
+    text-align:center;
+}
+
 @media screen and (max-width : 1300px)
 {
     body{
