@@ -5,7 +5,6 @@
 
 # import library
 from flask import Flask, render_template, request, jsonify
-
 import program.parser as p
 import program.call_api as ca
 
@@ -16,6 +15,7 @@ APP = Flask(__name__)
 APP.config.from_object('config')
 
 
+
 @APP.route('/')
 def index():
     """ display the html web page """
@@ -23,19 +23,19 @@ def index():
 
 @APP.route("/process", methods=["POST"])
 def process():
-    # récupérer la question de l'utilisateur
+    # get the user's question and return an error message if no result
     question = request.form['question']
     if not question:
         return jsonify({'error': "Tu n'es pas bavard ..."})
 
-    # parser la question et récupérer les informations du lieu recherché
+    # get the place searched and return an error message if no result
     new_parser = p.Parser()
     place = new_parser.get_place_searched(question)
     if not place:
         return jsonify({'error': "Je n'ai pas vraiment compris où tu voulais aller ..."})
 
     else:
-        # get place searched informations
+        # get the address of the place and create a message
         new_call_api_maps = ca.CallApiMaps()
         data = new_call_api_maps.get_place_data(place)
         address = data['candidates'][0]["formatted_address"]
@@ -44,6 +44,7 @@ def process():
         else:
             text_address = "Voici l'adresse de {} :<br>{}.".format(place, address)
 
+        # get the coordinates of the place and create a message
         latitude = data['candidates'][0]["geometry"]["location"]['lat']
         longitude = data['candidates'][0]["geometry"]["location"]['lng']
         if not latitude:
@@ -51,6 +52,7 @@ def process():
         else:
             text_map = "Tiens ! Jette un coup d'oeil sur cette carte !"
 
+        # get the history of the place and create a message
         new_call_api_wiki = ca.CallApiWikipedia()
         history = new_call_api_wiki.get_place_history(place)[0]
         url = new_call_api_wiki.get_place_history(place)[1]
@@ -60,6 +62,7 @@ def process():
             text_history = "Dailleurs ! Sais-tu que je connais très bien cet endroit ?<br>{} <br>Désolé, je suis un peu bavard..." \
                            "regardes ici si tu veux en savoir plus : <a href={} target='_blank'>ICI</a>.".format(history, url)
 
+    # return latitude, longitude and text
     return jsonify({'latitude': latitude, 'longitude': longitude,
                     'address': text_address, 'history': text_history,
                     'map': text_map})
