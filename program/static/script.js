@@ -23,7 +23,7 @@ function getQuestionInThread() {
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
                     center: {lat: data.latitude, lng: data.longitude},
-                    zoom: 8
+                    zoom: 18
                     });
                 }
                 initMap();

@@ -27,9 +27,9 @@ class Parser:
                 while word in list_user_question:
                     list_user_question.remove(word)
 
-        place = list_user_question[0]
+        place = " ".join(list_user_question)
 
         return place
 
-#new_parser = Parser()
-#new_parser.get_place_searched("merci de m'indiquer l'endroit ou se trouve la ville de caluire")
+"""new_parser = Parser()
+new_parser.get_place_searched("merci de m'indiquer l'endroit ou se trouve la mairie de caluire lyon toulouse")"""
