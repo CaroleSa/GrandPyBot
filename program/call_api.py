@@ -59,7 +59,7 @@ class CallApiWikipedia:
             # get the description of the place
             place_history = p_wiki.summary
             # get index of the point
-            index = place_history.find(".", 100)
+            index = place_history.find(".", 200)
             # reduction of the description, add comment and link
             place_history = p_wiki.summary[:index + 1]
 
