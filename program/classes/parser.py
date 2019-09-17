@@ -28,7 +28,7 @@ class Parser:
                     list_user_question.remove(word)
 
         place = " ".join(list_user_question)
-
+        print(place)
         return place
 
 """new_parser = Parser()

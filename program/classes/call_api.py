@@ -67,5 +67,5 @@ class CallApiWikipedia:
 
         # display the text if not existing wikipedia page
         else:
-            message = "Pas de données"
-            return message
+            no_result = ""
+            return no_result, no_result

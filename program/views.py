@@ -5,8 +5,8 @@
 
 # import library
 from flask import Flask, render_template, request, jsonify
-import program.parser as p
-import program.call_api as ca
+import program.classes.parser as p
+import program.classes.call_api as ca
 
 
 
@@ -38,10 +38,13 @@ def process():
         # get the address of the place and create a message
         new_call_api_maps = ca.CallApiMaps()
         data = new_call_api_maps.get_place_data(place)
-        address = data['candidates'][0]["formatted_address"]
-        if not address:
+        if not data['candidates']:
             text_address = "Impossible de remettre la main sur mon carnet d'adresses !"
+            return jsonify({'latitude': 0, 'longitude': 0,
+                            'address': text_address, 'history': 0,
+                            'map': 0})
         else:
+            address = data['candidates'][0]["formatted_address"]
             text_address = "Voici l'adresse de {} :<br>{}.".format(place, address)
 
         # get the coordinates of the place and create a message
@@ -50,7 +53,7 @@ def process():
         if not latitude:
             text_map = "Désolé, j'ai perdu ma carte... je ne vais pas pouvoir te montrer où c'est."
         else:
-            text_map = "Tiens ! Jette un coup d'oeil sur cette carte !"
+            text_map = "Tiens ! Jette un coup d'oeil sur ma carte !"
 
         # get the history of the place and create a message
         new_call_api_wiki = ca.CallApiWikipedia()
@@ -65,7 +68,7 @@ def process():
     # return latitude, longitude and text
     return jsonify({'latitude': latitude, 'longitude': longitude,
                     'address': text_address, 'history': text_history,
-                    'map': text_map})
+                    'map': text_map, 'error': 0})
 
 if __name__ == "__main__":
     APP.run()

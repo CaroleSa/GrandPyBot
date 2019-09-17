@@ -3,7 +3,7 @@
 
 
 # import de la variable app à partir du fichier __init__
-from program import APP
+from program.views import APP
 
 # point d'entrée du programme
 if __name__ == "__main__":

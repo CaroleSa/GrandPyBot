@@ -9,7 +9,7 @@ import json
 import requests
 
 
-import program.call_api as ca
+from program.classes import call_api
 
 
 """def test_get_place_history():
