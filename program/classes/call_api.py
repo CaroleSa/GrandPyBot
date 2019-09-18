@@ -69,3 +69,6 @@ class CallApiWikipedia:
         else:
             no_result = ""
             return no_result, no_result
+
+"""new = CallApiMaps()
+new.get_place_data("lyon")"""

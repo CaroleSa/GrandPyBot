@@ -12,10 +12,9 @@ function getQuestionInThread() {
 	    $('#loader').hide();
 	    if(data.error){
 				$('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
-		}else{
+		}if(data.latitude){
                 $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                 + data.history + "<br>" + data.map + "</p>");
-
 
                 var map;
                 function initMap() {
@@ -31,7 +30,13 @@ function getQuestionInThread() {
                 $('#map').css('border-right',' 5px white inset');
                 $('#map').css('border-top',' 5px white inset');
                 $('#map').css('border-bottom',' 5px white inset');
-             }
+
+                }else{
+                    $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
+                    + data.history + "<br>" + data.map + "</p>");
+                    }
+
+
     });
  	$('textarea').val('').change();
 }
