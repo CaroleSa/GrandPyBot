@@ -10,7 +10,7 @@ class Parser:
         user_question = user_question.lower()
 
         # deleting the symbols of the user question
-        with open("symbols.txt", "r") as f:
+        with open("program/classes/symbols.txt", "r") as f:
             file = f.readlines()
             for symbol in file:
                 symbol = symbol.replace("\n", "")
@@ -20,7 +20,7 @@ class Parser:
         list_user_question = user_question.split()
 
         # deleting the common words of the user question
-        with open("common_words.txt", "r") as f:
+        with open("program/classes/common_words.txt", "r") as f:
             file = f.readlines()
             for word in file:
                 word = word.replace("\n", "")
@@ -28,7 +28,7 @@ class Parser:
                     list_user_question.remove(word)
 
         place = " ".join(list_user_question)
-        print(place)
+
         return place
 
 """new_parser = Parser()

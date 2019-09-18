@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
     <title>Projet OC 7</title>
@@ -16,7 +16,7 @@
 
         <header><br/>
             <div class="row">
-                <img id = "logoGrandPyBot" src="../images/robot.png" alt="logo robot"/>
+                <img id = "logoGrandPyBot" src="{{ url_for('static', filename='images/robot.png') }}" alt="logo robot"/>
                 <h1 class="col-md-offset-0 col-md-5"><span class="Title"> Grand</span><span id="pyTitle">Py</span><span
                         class="Title"> Bot</span></h1>
             </div>
@@ -57,7 +57,7 @@
 
                 <div class="row"><br/>
                     <div class="col-md-12" id="loader">
-                        <img src="../images/loader.gif" alt="loader"/>
+                        <img src="{{ url_for('static', filename='images/loader.gif') }}" alt="loader"/>
                     </div>
                 </div>
         </section><br/><br/>
@@ -67,10 +67,10 @@
                 <p class="col-md-2 col-xs-5" id="author">Carole Sartori</p>
                 <div id="logo_link">
                     <a href="https://github.com/CaroleSa" target="_blank">
-                        <img src="../images/github.png" alt="logo github"/>
+                        <img src="{{ url_for('static', filename='images/github.png') }}" alt="logo github"/>
                     </a>
                     <a href="https://www.linkedin.com/in/carole-sartori-5b76b8166/?originalSubdomain=fr" target="_blank">
-                        <img src="../images/linkedin.png" alt="logo linkedin" />
+                        <img src="{{ url_for('static', filename='images/linkedin.png') }}" alt="logo linkedin" />
                     </a>
                 </div>
             </div>
@@ -78,7 +78,7 @@
 
     </div>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="../static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 
 </html>

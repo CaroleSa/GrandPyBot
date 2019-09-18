@@ -1,23 +1,23 @@
 @font-face {
     font-family: 'amadeusregular';
-    src: url('../fonts/Amadeus-webfont.eot');
-    src: url('../fonts/Amadeus-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Amadeus-webfont.woff2') format('woff2'),
-         url('../fonts/Amadeus-webfont.woff') format('woff'),
-         url('../fonts/Amadeus-webfont.ttf') format('truetype'),
-         url('../fonts/Amadeus-webfont.svg#amadeusregular') format('svg');
+    src: url('fonts/Amadeus-webfont.eot');
+    src: url('fonts/Amadeus-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Amadeus-webfont.woff2') format('woff2'),
+         url('fonts/Amadeus-webfont.woff') format('woff'),
+         url('fonts/Amadeus-webfont.ttf') format('truetype'),
+         url('fonts/Amadeus-webfont.svg#amadeusregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'saxmonoregular';
-    src: url('../fonts/saxmono-webfont.eot');
-    src: url('../fonts/saxmono-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/saxmono-webfont.woff2') format('woff2'),
-         url('../fonts/saxmono-webfont.woff') format('woff'),
-         url('../fonts/saxmono-webfont.ttf') format('truetype'),
-         url('../fonts/saxmono-webfont.svg#saxmonoregular') format('svg');
+    src: url('fonts/saxmono-webfont.eot');
+    src: url('fonts/saxmono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/saxmono-webfont.woff2') format('woff2'),
+         url('fonts/saxmono-webfont.woff') format('woff'),
+         url('fonts/saxmono-webfont.ttf') format('truetype'),
+         url('fonts/saxmono-webfont.svg#saxmonoregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -40,7 +40,7 @@
 }
 
 body{
-    background-image:url("../images/fond1.png");
+    background-image:url("images/fond1.png");
     background-size: cover;
 }
 
@@ -131,7 +131,7 @@ textarea{
 @media screen and (max-width : 1300px)
 {
     body{
-    background-image:url("../images/fond2.png");
+    background-image:url("images/fond2.png");
     background-size: cover;
     }
 }
@@ -139,7 +139,7 @@ textarea{
 @media screen and (max-width : 700px)
 {
     body{
-    background-image:url("../images/fond1.png");
+    background-image:url("images/fond1.png");
     background-size: cover;
     }
 }
