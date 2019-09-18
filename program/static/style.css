@@ -2,7 +2,6 @@
     font-family: 'amadeusregular';
     src: url('fonts/Amadeus-webfont.eot');
     src: url('fonts/Amadeus-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/Amadeus-webfont.woff2') format('woff2'),
          url('fonts/Amadeus-webfont.woff') format('woff'),
          url('fonts/Amadeus-webfont.ttf') format('truetype'),
          url('fonts/Amadeus-webfont.svg#amadeusregular') format('svg');
@@ -14,7 +13,6 @@
     font-family: 'saxmonoregular';
     src: url('fonts/saxmono-webfont.eot');
     src: url('fonts/saxmono-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/saxmono-webfont.woff2') format('woff2'),
          url('fonts/saxmono-webfont.woff') format('woff'),
          url('fonts/saxmono-webfont.ttf') format('truetype'),
          url('fonts/saxmono-webfont.svg#saxmonoregular') format('svg');
@@ -80,12 +78,6 @@ h1{
     text-align:left;
   	font-size:1em;
   	word-wrap:break-word;
-}
-
-
-#rowMap{
-    width : 230px;
-    margin:auto;
 }
 
 footer{

@@ -2,9 +2,7 @@ $('#loader').hide();
 
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
-
     $('#messageThread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
-
     $.ajax({
 			data : {question: $('textarea').val()},
 			type : 'POST',
@@ -40,28 +38,15 @@ function getQuestionInThread() {
 
 
 
-
 $("button").on('click', function () {
     $('#loader').show();
     getQuestionInThread();
-
-    $.ajax({
-			data : {question: $('textarea').val()},
-			type : 'POST',
-			url : '/process'
-		})
 });
 
 $("textarea").keyup(function(e) {
     if (e.keyCode == 13) {
         $('#loader').show();
         getQuestionInThread();
-
-    $.ajax({
-			data : {question: $('textarea').val()},
-			type : 'POST',
-			url : '/process'
-		})
     }
 });
 
