@@ -1,4 +1,5 @@
 $('#loader').hide();
+$("#rowMap").hide();
 
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
@@ -15,7 +16,7 @@ function getQuestionInThread() {
 		}if(data.latitude){
                 $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                 + data.history + "<br>" + data.map + "</p>");
-
+                $("#rowMap").show();
                 var map;
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
@@ -32,6 +33,7 @@ function getQuestionInThread() {
                 $('#map').css('border-bottom',' 5px white inset');
 
                 }else{
+                    $("#rowMap").hide();
                     $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                     + data.history + "<br>" + data.map + "</p>");
                     }
