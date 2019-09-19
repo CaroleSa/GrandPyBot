@@ -50,7 +50,7 @@ def process():
         history = new_call_api_wiki.get_place_history(place)[0]
         url = new_call_api_wiki.get_place_history(place)[1]
         if len(history) < 10:
-            text_history_list = ["Je n'y suis jamais allé... C'est quoi ? Une pizzeria ?", "Je ne connais pas cet endroit",
+            text_history_list = ["Je n'y suis jamais allé... C'est quoi ? Une pizzeria ?", "Je ne connais pas cet endroit.",
                                  "Pour moi, cet endroit fait encore parti des lieux à visiter !",
                                  "Il parait qu'il y a de jolies choses à voir la bas !"]
             random_index = random.randint(0, 3)
@@ -60,7 +60,7 @@ def process():
                                "J'y vais souvent pour faire du Yoga !"]
             random_index = random.randint(0, 2)
             text = text_list[random_index]
-            text_history = "Sais-tu que je connais très bien cet endroit ? {}<br>{} <br>Désolé, je suis un peu bavard..." \
+            text_history = "Sais-tu que je connais très bien cet endroit ?<br>{}<br>{} <br>Désolé, je suis un peu bavard..." \
                            "regardes <a href={} target='_blank'>ICI</a> si tu veux en savoir plus.".format(text, history, url)
 
         # get the address of the place and create a message

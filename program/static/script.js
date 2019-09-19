@@ -4,7 +4,7 @@ $("#rowMap").hide();
 
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
-    $('#thread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
+    $('#messageThread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
     $.ajax({
 			data : {question: $('textarea').val()},
 			type : 'POST',
@@ -14,14 +14,16 @@ function getQuestionInThread() {
 	    $('#loader').hide();
 	    $('#space2').show();
 	    if(data.error){
-				$('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
+				$('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
 				element = document.getElementById('thread');
 	            element.scrollTop = element.scrollHeight;
 				return
 		}if(data.latitude){
-                $('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
+                $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                 + data.history + "<br>" + data.map + "</p>");
                 $("#rowMap").show();
+                element = document.getElementById('thread');
+	            element.scrollTop = element.scrollHeight;
                 var map;
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
@@ -39,8 +41,10 @@ function getQuestionInThread() {
 
                 }else{
                     $("#rowMap").hide();
-                    $('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
+                    $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                     + data.history + "<br>" + data.map + "</p>");
+                    element = document.getElementById('thread');
+	                element.scrollTop = element.scrollHeight;
                     }
 
 
