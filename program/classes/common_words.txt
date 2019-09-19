@@ -8,6 +8,7 @@ ah
 ai
 aie
 ailleurs
+aime
 aimerai
 aimerais
 ainsi
@@ -128,7 +129,9 @@ compris
 concernant
 connais
 connaitre
+contente
 contre
+coucou
 couic
 crac
 d
@@ -471,6 +474,7 @@ recherche
 relative
 relativement
 remarquable
+rencontrer
 rend
 rendre
 restant
@@ -617,11 +621,13 @@ vives
 vlan
 voici
 voilà
+voir
 vont
 vos
 votre
 vous
 vous-mêmes
+vraiment
 vu
 vé
 vôtre

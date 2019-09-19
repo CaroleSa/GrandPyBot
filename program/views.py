@@ -27,13 +27,21 @@ def process():
     # get the user's question and return an error message if no result
     question = request.form['question']
     if len(question) < 1:
-        return jsonify({'error': "Tu n'es pas bavard ..."})
+        text_error_list = ["Tu n'es pas très bavard !", "Dis-moi... où souhaites-tu aller ?",
+                            "Euh... oui ?", "Allo ! Il y a quelqu'un ?"]
+        random_index = random.randint(0, 3)
+        text_error = text_error_list[random_index]
+        return jsonify({'error': text_error})
 
     # get the place searched and return an error message if no result
     new_parser = p.Parser()
     place = new_parser.get_place_searched(question)
     if not place:
-        return jsonify({'error': "Je n'ai pas vraiment compris où tu voulais aller ..."})
+        text_error_list = ["Je n'ai pas vraiment compris où tu voulais aller ...", "Où veux-tu en venir ?",
+                           "Désolé ! Je ne suis pas programmé pour discuter, même si tu sembles très sympathique !"]
+        random_index = random.randint(0, 2)
+        text_error = text_error_list[random_index]
+        return jsonify({'error': text_error})
 
     else:
 
@@ -48,8 +56,12 @@ def process():
             random_index = random.randint(0, 3)
             text_history = text_history_list[random_index]
         else:
-            text_history = "Sais-tu que je connais très bien cet endroit ?<br>{} <br>Désolé, je suis un peu bavard..." \
-                           "regardes <a href={} target='_blank'>ICI</a> si tu veux en savoir plus.".format(history, url)
+            text_list = ["J'y ai retrouvé un ami pas plus tard qu'hier ...", "Je m'y promène régulièrement ...",
+                               "J'y vais souvent pour faire du Yoga !"]
+            random_index = random.randint(0, 2)
+            text = text_list[random_index]
+            text_history = "Sais-tu que je connais très bien cet endroit ? {}<br>{} <br>Désolé, je suis un peu bavard..." \
+                           "regardes <a href={} target='_blank'>ICI</a> si tu veux en savoir plus.".format(text, history, url)
 
         # get the address of the place and create a message
         new_call_api_maps = ca.CallApiMaps()
