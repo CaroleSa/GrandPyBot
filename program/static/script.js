@@ -13,6 +13,8 @@ function getQuestionInThread() {
 	    $('#loader').hide();
 	    if(data.error){
 				$('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
+				element = document.getElementById('thread');
+	            element.scrollTop = element.scrollHeight;
 				return
 		}if(data.latitude){
                 $('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
