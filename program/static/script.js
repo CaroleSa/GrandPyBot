@@ -7,6 +7,8 @@ function getQuestionInThread() {
 
     $('#messageThread').append("<br><p id='message'><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
     $(".textMap").remove();
+    element = document.getElementById('thread');
+	element.scrollTop = element.scrollHeight;
     $.ajax({
 			data : {question: $('textarea').val()},
 			type : 'POST',
@@ -24,10 +26,10 @@ function getQuestionInThread() {
 				return
 		}if(data.latitude){
 
-                $('#messageThread').append("<br><p id='message'><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
-                + data.history + "</p>");
+                $('#messageThread').append("<br><p id='message'><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "</p>");
                 element = document.getElementById('thread');
 	            element.scrollTop = element.scrollHeight;
+	            $('#messageThread').append("<p id='message'>" + data.history + "</p>");
 	            $('#messageThread').append("<p class='textMap' id='message'>" + data.map + "</p>");
                 $("#rowMap").show();
 
@@ -49,10 +51,10 @@ function getQuestionInThread() {
 
                 }else{
 
-                    $('#messageThread').append("<br><p id='message'><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
-                    + data.history + "<br>" + data.map + "</p>");
+                    $('#messageThread').append("<br><p id='message'><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "</p>");
                     element = document.getElementById('thread');
 	                element.scrollTop = element.scrollHeight;
+	                $('#messageThread').append("<p id='message'>" + data.history + "<br>" + data.map + "</p>");
                     }
 
 
@@ -64,6 +66,7 @@ function getQuestionInThread() {
 
 
 $("button").on('click', function () {
+
     $('#loader').show();
     $('#space2').hide();
     $("#rowMap").hide();
@@ -73,6 +76,7 @@ $("button").on('click', function () {
 
 $("textarea").keyup(function(e) {
     if (e.keyCode == 13) {
+
         $('#loader').show();
         $('#space2').hide();
         $("#rowMap").hide();
