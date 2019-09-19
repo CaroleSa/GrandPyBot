@@ -7,6 +7,7 @@
 from flask import Flask, render_template, request, jsonify
 import program.classes.parser as p
 import program.classes.call_api as ca
+import random
 
 
 
@@ -41,7 +42,11 @@ def process():
         history = new_call_api_wiki.get_place_history(place)[0]
         url = new_call_api_wiki.get_place_history(place)[1]
         if len(history) < 10:
-            text_history = "Je n'y suis jamais allé... C'est quoi ? Une pizzeria ?"
+            text_history_list = ["Je n'y suis jamais allé... C'est quoi ? Une pizzeria ?", "Je ne connais pas cet endroit",
+                                 "Pour moi, cet endroit fait encore parti des lieux à visiter !",
+                                 "Il parait qu'il y a de jolies robotes la bas !"]
+            random_index = random.randint(0, 3)
+            text_history = text_history_list[random_index]
         else:
             text_history = "Sais-tu que je connais très bien cet endroit ?<br>{} <br>Désolé, je suis un peu bavard..." \
                            "regardes ici si tu veux en savoir plus : <a href={} target='_blank'>ICI</a>.".format(history, url)
@@ -50,12 +55,11 @@ def process():
         new_call_api_maps = ca.CallApiMaps()
         data = new_call_api_maps.get_place_data(place)
         if not data['candidates']:
-            text_address = "Zut ! Je ne trouve rien dans mon carnet d'adresses !"
-            text_map = "Mince ! J'ai encore perdu ma carte... on va pas pouvoir regarder où c'est..."
+            text_address = "Je ne trouve rien dans mon carnet d'adresses !"
+            text_map = ""
 
             # return latitude, longitude and text
-            return jsonify({'address': text_address, 'history': text_history,
-                            'map': text_map})
+            return jsonify({'address': text_address, 'history': text_history, 'map': text_map})
 
         else:
             address = data['candidates'][0]["formatted_address"]
