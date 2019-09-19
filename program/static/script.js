@@ -5,8 +5,8 @@ $("#rowMap").hide();
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
 
-    $('#messageThread').append("<br><p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
-    $("#textMap").remove();
+    $('#messageThread').append("<br><p id='message'><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
+    $(".textMap").remove();
     $.ajax({
 			data : {question: $('textarea').val()},
 			type : 'POST',
@@ -18,17 +18,17 @@ function getQuestionInThread() {
 
 	    if(data.error){
 
-				$('#messageThread').append("<br><p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
+				$('#messageThread').append("<br><p id='message'><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
 				element = document.getElementById('thread');
 	            element.scrollTop = element.scrollHeight;
 				return
 		}if(data.latitude){
 
-                $('#messageThread').append("<br><p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
+                $('#messageThread').append("<br><p id='message'><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                 + data.history + "</p>");
                 element = document.getElementById('thread');
 	            element.scrollTop = element.scrollHeight;
-	            $('#messageThread').append("<p id='textMap'>" + data.map + "</p>");
+	            $('#messageThread').append("<p class='textMap' id='message'>" + data.map + "</p>");
                 $("#rowMap").show();
 
                 var map;
@@ -39,9 +39,9 @@ function getQuestionInThread() {
                     });
                 }
                 initMap();
-                $('#map').css('max-height','100%');
+                $('#map').css('height','180px');
                 $('#map').css('max-width','100%');
-                $('#map').css('object-fit','cover');
+                $('#map').css('margin','10px');
                 $('#map').css('border-left','5px white inset');
                 $('#map').css('border-right',' 5px white inset');
                 $('#map').css('border-top',' 5px white inset');
@@ -49,7 +49,7 @@ function getQuestionInThread() {
 
                 }else{
 
-                    $('#messageThread').append("<br><p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
+                    $('#messageThread').append("<br><p id='message'><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                     + data.history + "<br>" + data.map + "</p>");
                     element = document.getElementById('thread');
 	                element.scrollTop = element.scrollHeight;
