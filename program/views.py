@@ -50,7 +50,8 @@ def process():
         history = new_call_api_wiki.get_place_history(place)[0]
         url = new_call_api_wiki.get_place_history(place)[1]
         if len(history) < 10:
-            text_history_list = ["Je n'y suis jamais allé... C'est quoi ? Une pizzeria ?", "Je ne connais pas cet endroit.",
+            text_history_list = ["Je n'y suis jamais allé... C'est quoi ? Une pizzeria ?",
+                                 "Je n'en sais pas plus sur cet endroit.",
                                  "Pour moi, cet endroit fait encore parti des lieux à visiter !",
                                  "Il parait qu'il y a de jolies choses à voir la bas !"]
             random_index = random.randint(0, 3)
@@ -75,8 +76,8 @@ def process():
 
         else:
             address = data['candidates'][0]["formatted_address"]
-            text_address = "Voici l'adresse de {} : {}.".format(place, address)
-            text_map = "Tiens ! Jette un coup d'oeil sur ma carte !<br>Tu peux cliquer dessus pour l'agrandir ..."
+            text_address = "Voici l'adresse que j'ai trouvée dans mon carnet : {}.".format(address)
+            text_map = "Tiens ! Jette un coup d'oeil sur ma carte !<br>Tu peux cliquer sur le carré blanc pour l'agrandir ..."
 
             # get the coordinates of the place and create a message
             latitude = data['candidates'][0]["geometry"]["location"]['lat']

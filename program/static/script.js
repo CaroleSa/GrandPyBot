@@ -4,7 +4,9 @@ $("#rowMap").hide();
 
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
+
     $('#messageThread').append("<br><p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
+    $("#textMap").remove();
     $.ajax({
 			data : {question: $('textarea').val()},
 			type : 'POST',
@@ -13,17 +15,20 @@ function getQuestionInThread() {
 	.done(function(data) {
 	    $('#loader').hide();
 	    $('#space2').show();
+
 	    if(data.error){
+
 				$('#messageThread').append("<br><p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
 				element = document.getElementById('thread');
 	            element.scrollTop = element.scrollHeight;
 				return
 		}if(data.latitude){
+
                 $('#messageThread').append("<br><p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                 + data.history + "</p>");
                 element = document.getElementById('thread');
 	            element.scrollTop = element.scrollHeight;
-	            $('#messageThread').append("<p>" + data.map + "</p>");
+	            $('#messageThread').append("<p id='textMap'>" + data.map + "</p>");
                 $("#rowMap").show();
 
                 var map;
@@ -34,15 +39,16 @@ function getQuestionInThread() {
                     });
                 }
                 initMap();
-                $('#map').css('height','200');
-                $('#map').css('width','430px');
+                $('#map').css('max-height','100%');
+                $('#map').css('max-width','100%');
+                $('#map').css('object-fit','cover');
                 $('#map').css('border-left','5px white inset');
                 $('#map').css('border-right',' 5px white inset');
                 $('#map').css('border-top',' 5px white inset');
                 $('#map').css('border-bottom',' 5px white inset');
 
                 }else{
-                    $("#rowMap").hide();
+
                     $('#messageThread').append("<br><p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                     + data.history + "<br>" + data.map + "</p>");
                     element = document.getElementById('thread');
@@ -61,6 +67,7 @@ $("button").on('click', function () {
     $('#loader').show();
     $('#space2').hide();
     $("#rowMap").hide();
+
     getQuestionInThread();
 });
 
