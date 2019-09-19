@@ -75,8 +75,8 @@ def process():
 
         else:
             address = data['candidates'][0]["formatted_address"]
-            text_address = "Voici l'adresse de {} :<br>{}.".format(place, address)
-            text_map = "Tiens ! Jette un coup d'oeil sur ma carte !"
+            text_address = "Voici l'adresse de {} : {}.".format(place, address)
+            text_map = "Tiens ! Jette un coup d'oeil sur ma carte !<br>Tu peux cliquer dessus pour l'agrandir ..."
 
             # get the coordinates of the place and create a message
             latitude = data['candidates'][0]["geometry"]["location"]['lat']

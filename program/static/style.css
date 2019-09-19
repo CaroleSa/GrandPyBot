@@ -136,3 +136,8 @@ textarea{
     background-size: cover;
     }
 }
+
+p
+{
+   margin-top:-10px;
+}
