@@ -3,7 +3,7 @@ $("#rowMap").hide();
 
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
-    $('#messageThread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
+    $('#thread').append("<p><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
     $.ajax({
 			data : {question: $('textarea').val()},
 			type : 'POST',
@@ -12,10 +12,10 @@ function getQuestionInThread() {
 	.done(function(data) {
 	    $('#loader').hide();
 	    if(data.error){
-				$('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
+				$('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
 				return
 		}if(data.latitude){
-                $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
+                $('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                 + data.history + "<br>" + data.map + "</p>");
                 $("#rowMap").show();
                 var map;
@@ -35,12 +35,13 @@ function getQuestionInThread() {
 
                 }else{
                     $("#rowMap").hide();
-                    $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
+                    $('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                     + data.history + "<br>" + data.map + "</p>");
                     }
 
 
     });
+
  	$('textarea').val('').change();
 }
 
