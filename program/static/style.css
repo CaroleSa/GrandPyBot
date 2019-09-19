@@ -129,13 +129,8 @@ textarea{
     }
 }
 
-@media screen and (max-width : 700px)
-{
-    body{
-    background-image:url("images/fond1.png");
-    background-size: cover;
-    }
-}
+
+
 
 #message
 {
