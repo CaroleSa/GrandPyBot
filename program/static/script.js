@@ -1,4 +1,5 @@
 $('#loader').hide();
+$('#space2').show();
 $("#rowMap").hide();
 
 function getQuestionInThread() {
@@ -11,6 +12,7 @@ function getQuestionInThread() {
 	})
 	.done(function(data) {
 	    $('#loader').hide();
+	    $('#space2').show();
 	    if(data.error){
 				$('#thread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
 				element = document.getElementById('thread');
@@ -51,6 +53,7 @@ function getQuestionInThread() {
 
 $("button").on('click', function () {
     $('#loader').show();
+    $('#space2').hide();
     $("#rowMap").hide();
     getQuestionInThread();
 });
@@ -58,6 +61,7 @@ $("button").on('click', function () {
 $("textarea").keyup(function(e) {
     if (e.keyCode == 13) {
         $('#loader').show();
+        $('#space2').hide();
         $("#rowMap").hide();
         getQuestionInThread();
     }
