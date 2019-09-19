@@ -13,6 +13,7 @@ function getQuestionInThread() {
 	    $('#loader').hide();
 	    if(data.error){
 				$('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
+				return
 		}if(data.latitude){
                 $('#messageThread').append("<p><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "<br>"
                 + data.history + "<br>" + data.map + "</p>");
@@ -47,12 +48,14 @@ function getQuestionInThread() {
 
 $("button").on('click', function () {
     $('#loader').show();
+    $("#rowMap").hide();
     getQuestionInThread();
 });
 
 $("textarea").keyup(function(e) {
     if (e.keyCode == 13) {
         $('#loader').show();
+        $("#rowMap").hide();
         getQuestionInThread();
     }
 });

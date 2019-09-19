@@ -26,7 +26,7 @@ def index():
 def process():
     # get the user's question and return an error message if no result
     question = request.form['question']
-    if not question:
+    if len(question) < 1:
         return jsonify({'error': "Tu n'es pas bavard ..."})
 
     # get the place searched and return an error message if no result
@@ -44,12 +44,12 @@ def process():
         if len(history) < 10:
             text_history_list = ["Je n'y suis jamais allé... C'est quoi ? Une pizzeria ?", "Je ne connais pas cet endroit",
                                  "Pour moi, cet endroit fait encore parti des lieux à visiter !",
-                                 "Il parait qu'il y a de jolies robotes la bas !"]
+                                 "Il parait qu'il y a de jolies choses à voir la bas !"]
             random_index = random.randint(0, 3)
             text_history = text_history_list[random_index]
         else:
             text_history = "Sais-tu que je connais très bien cet endroit ?<br>{} <br>Désolé, je suis un peu bavard..." \
-                           "regardes ici si tu veux en savoir plus : <a href={} target='_blank'>ICI</a>.".format(history, url)
+                           "regardes <a href={} target='_blank'>ICI</a> si tu veux en savoir plus.".format(history, url)
 
         # get the address of the place and create a message
         new_call_api_maps = ca.CallApiMaps()
@@ -74,4 +74,3 @@ def process():
             return jsonify({'latitude': latitude, 'longitude': longitude,
                             'address': text_address, 'history': text_history,
                             'map': text_map})
-
