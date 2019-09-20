@@ -25,7 +25,7 @@ class CallApiMaps:
         params = {
             'input': place,
             'inputtype': 'textquery',
-            'fields': 'formatted_address,geometry',
+            'fields': 'name,formatted_address,geometry',
             'key': self.api_google_maps_key
         }
         request = requests.get(url=url, params=params)
@@ -71,4 +71,4 @@ class CallApiWikipedia:
             return no_result, no_result
 
 """new = CallApiMaps()
-new.get_place_data("lyon")"""
+new.get_place_data("openclassrooms")"""

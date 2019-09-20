@@ -75,8 +75,9 @@ def process():
             return jsonify({'address': text_address, 'history': text_history, 'map': text_map})
 
         else:
+            place_name = data['candidates'][0]["name"]
             address = data['candidates'][0]["formatted_address"]
-            text_address = "Voici l'adresse que j'ai trouvée dans mon carnet : {}.".format(address)
+            text_address = "Voici l'adresse que j'ai trouvée dans mon carnet pour {} :<br>{}.".format(place_name, address)
             text_map = "Tiens ! Jette un coup d'oeil sur ma carte !<br>Tu peux cliquer sur le carré blanc pour l'agrandir ..."
 
             # get the coordinates of the place and create a message
