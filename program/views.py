@@ -44,11 +44,14 @@ def process():
         return jsonify({'error': text_error})
 
     else:
+        new_call_api_maps = ca.CallApiMaps()
+        data = new_call_api_maps.get_place_data(place)
+        place_name = data['candidates'][0]["name"]
 
         # get the history of the place and create a message
         new_call_api_wiki = ca.CallApiWikipedia()
-        history = new_call_api_wiki.get_place_history(place)[0]
-        url = new_call_api_wiki.get_place_history(place)[1]
+        history = new_call_api_wiki.get_place_history(place_name)[0]
+        url = new_call_api_wiki.get_place_history(place_name)[1]
         if len(history) < 10:
             text_history_list = ["Je n'y suis jamais allé... C'est quoi ? Une pizzeria ?",
                                  "Je n'en sais pas plus sur cet endroit.",

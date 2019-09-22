@@ -37,3 +37,4 @@ class TestGoogleApi:
         new_callapimaps = ca.CallApiMaps()
         assert new_callapimaps.get_place_data(self.place) is not None
 
+
