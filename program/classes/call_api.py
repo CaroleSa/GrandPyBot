@@ -8,6 +8,7 @@
 # import
 import requests
 import wikipediaapi
+from config import google_key
 
 
 
@@ -15,7 +16,6 @@ class CallApi:
     """ Call A.P.I. Google maps """
 
     def __init__(self):
-        self.api_google_maps_key = ""
 
         # select language and format
         self.wiki = wikipediaapi.Wikipedia(
@@ -32,13 +32,12 @@ class CallApi:
             'input': place,
             'inputtype': 'textquery',
             'fields': 'name,formatted_address,geometry',
-            'key': self.api_google_maps_key
+            'key': google_key
         }
         request = requests.get(url=url, params=params)
 
         # convert data to json format
         data = request.json()
-        print(data)
 
         if data.get("status") == "OK":
             # get datas
@@ -86,17 +85,16 @@ class CallApi:
                 return {"history": place_history, "url": url}
 
             else:
-                """print("n'est pas une ville ou une entreprise")"""
                 return False
 
         else:
             return False
 
 
-ca = CallApi()
+"""ca = CallApi()
 data = ca.call_api_google_maps("lyon")
 print(data)
 name = data.get("name")
 
 data = ca.call_api_wikipedia(name)
-print(data)
+print(data)"""
