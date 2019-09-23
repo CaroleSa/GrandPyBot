@@ -45,16 +45,16 @@ def process():
 
     else:
         new_ca = ca.CallApi()
-        data_google = new_ca.call_api_google_maps(place)
+        try:
+            data_google = new_ca.call_api_google_maps(place)
+        except:
+            return jsonify({'error': "Il semble que la connexion soit interrompue..."})
+
 
         if data_google is False:
             text_error = "Je ne trouve rien dans mon carnet d'adresses !"
 
             return jsonify({'error': text_error})
-
-        if data_google == "pas d'internet":
-
-            return jsonify({'error': "pas d'internet"})
 
         else:
             name = data_google.get("name")
