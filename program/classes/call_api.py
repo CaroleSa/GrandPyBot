@@ -50,10 +50,10 @@ class CallApiWikipedia:
         """ Loading data of the A.P.I. Wikipedia """
         # select wikipedia page
         p_wiki = self.wiki.page(place)
-        print(p_wiki.summary)
+        print(p_wiki.exists())
 
         # display the text if existing wikipedia page : place history
-        if len(p_wiki.summary) > 10:
+        if p_wiki.exists() is True:
             # get the page link
             url = p_wiki.fullurl
 
@@ -72,4 +72,6 @@ class CallApiWikipedia:
             return no_result, no_result
 
 new = CallApiWikipedia()
-new.get_place_history("vic la gardiole")
+new.get_place_history("OpenClassrooms")
+
+
