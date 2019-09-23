@@ -62,10 +62,14 @@ def process():
             latitude = data_google.get("latitude")
             longitude = data_google.get("longitude")
 
-            data_wiki = new_ca.call_api_wikipedia(name)
+            try:
+                data_wiki = new_ca.call_api_wikipedia(name)
+            except:
+                return jsonify({'error': "Il semble que la connexion soit interrompue..."})
 
 
-            text_address = "Voici l'adresse que j'ai trouvée dans mon carnet pour {} :<br>{}.".format(name, address)
+            text_address = "Voici l'adresse que j'ai trouvée dans mon carnet pour {} :" \
+                           "<br>{}.".format(name, address)
             text_map = "Tiens ! Jette un coup d'oeil sur ma carte !<br>Tu peux cliquer sur le carré blanc " \
                        "pour l'agrandir ..."
 

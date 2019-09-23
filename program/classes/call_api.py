@@ -47,7 +47,12 @@ class CallApi:
             latitude = data['candidates'][0]["geometry"]["location"]['lat']
             longitude = data['candidates'][0]["geometry"]["location"]['lng']
 
-            return {"name": name, "address": address, "latitude": latitude, "longitude": longitude}
+            return {
+                "name": name,
+                "address": address,
+                "latitude": latitude,
+                "longitude": longitude
+            }
 
         else:
             return False
@@ -88,10 +93,10 @@ class CallApi:
             return False
 
 
-"""ca = CallApi()
-data = ca.call_api_google_maps("Croix-Rouge française")
+ca = CallApi()
+data = ca.call_api_google_maps("lyon")
 print(data)
 name = data.get("name")
 
 data = ca.call_api_wikipedia(name)
-print(data)"""
+print(data)

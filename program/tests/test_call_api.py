@@ -28,13 +28,15 @@ class TestGoogleApi:
 
     def test_search_ok(self, monkeypatch):
         def mockreturn(url, params):
-            return MockResponse({
-            'candidates': [{'formatted_address': 'Lyon, France',
-                            'geometry': {'location': {'lat': 45.764043, 'lng': 4.835659},
-                                         'viewport': {'northeast': {'lat': 45.808425, 'lng': 4.898393},
-                                                      'southwest': {'lat': 45.707486, 'lng': 4.7718489}}}}], 'status': 'OK'})
+            return MockResponse({'candidates': [{'candidates': [{'formatted_address': 'Lyon, France',
+                                            'geometry': {'location': {'lat': 45.764043, 'lng': 4.835659},
+                                                         'viewport': {'northeast': {'lat': 45.808425, 'lng': 4.898393},
+                                                                      'southwest': {'lat': 45.707486, 'lng': 4.7718489}}},
+                                            'name': 'Lyon'}],
+                            'status': 'OK'}})
+
         monkeypatch.setattr(requests, "get", mockreturn)
-        new_callapimaps = ca.CallApiMaps()
-        assert new_callapimaps.get_place_data(self.place) is not None
+        new_ca = ca.CallApi()
+        assert new_ca.call_api_google_maps(self.place) is not None
 
 
