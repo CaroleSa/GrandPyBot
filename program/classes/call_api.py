@@ -11,13 +11,19 @@ import wikipediaapi
 
 
 
-class CallApiMaps:
+class CallApi:
     """ Call A.P.I. Google maps """
 
     def __init__(self):
         self.api_google_maps_key = ""
 
-    def get_place_data(self, place):
+        # select language and format
+        self.wiki = wikipediaapi.Wikipedia(
+            language='fr',
+            extract_format=wikipediaapi.ExtractFormat.WIKI
+        )
+
+    def call_api_google_maps(self, place):
         """ Loading data of the A.P.I. Google Maps and convert to json """
 
         # request and getting place data
@@ -32,46 +38,60 @@ class CallApiMaps:
 
         # convert data to json format
         data = request.json()
+        print(data)
 
-        return data
+        if data.get("status") == "OK":
+            # get datas
+            name = data['candidates'][0]["name"]
+            address = data['candidates'][0]["formatted_address"]
+            latitude = data['candidates'][0]["geometry"]["location"]['lat']
+            longitude = data['candidates'][0]["geometry"]["location"]['lng']
+
+            return {"name": name, "address": address, "latitude": latitude, "longitude": longitude}
+
+        else:
+            return False
 
 
-class CallApiWikipedia:
-    """ Call A.P.I. Wikipedia """
 
-    def __init__(self):
-        # select language and format
-        self.wiki = wikipediaapi.Wikipedia(
-            language='fr',
-            extract_format=wikipediaapi.ExtractFormat.WIKI
-        )
-
-    def get_place_history(self, place):
+    def call_api_wikipedia(self, place):
         """ Loading data of the A.P.I. Wikipedia """
         # select wikipedia page
+
+
         p_wiki = self.wiki.page(place)
-        print(p_wiki.exists())
 
-        # display the text if existing wikipedia page : place history
+
+
         if p_wiki.exists() is True:
-            # get the page link
-            url = p_wiki.fullurl
+            """print(p_wiki.text)"""
 
-            # get the description of the place
-            place_history = p_wiki.summary
-            # get index of the point
-            index = place_history.find(".", 200)
-            # reduction of the description, add comment and link
-            place_history = p_wiki.summary[:index + 1]
+            if "Géographie" or "entreprise" or "Histoire" in p_wiki.text:
+                # display the text if existing wikipedia page : place history
+                # get the page link
+                url = p_wiki.fullurl
 
-            return place_history, url
+                # get the description of the place
+                place_history = p_wiki.summary
+                # get index of the point
+                index = place_history.find(".", 200)
+                # reduction of the description, add comment and link
+                place_history = p_wiki.summary[:index + 1]
 
-        # display the text if not existing wikipedia page
+                return {"history": place_history, "url": url}
+
+            else:
+                """print("n'est pas une ville ou une entreprise")"""
+                return False
+
         else:
-            no_result = ""
-            return no_result, no_result
-
-new = CallApiWikipedia()
-new.get_place_history("OpenClassrooms")
+            return False
 
 
+"""ca = CallApi()
+data = ca.call_api_google_maps("Croix-Rouge française")
+print(data)
+name = data.get("name")
+
+data = ca.call_api_wikipedia(name)
+print(data)"""
