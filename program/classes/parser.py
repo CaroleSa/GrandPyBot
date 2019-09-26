@@ -28,8 +28,8 @@ class Parser:
                     list_user_question.remove(word)
 
         place = " ".join(list_user_question)
-
+        print("parser:", place)
         return place
 
 """new_parser = Parser()
-new_parser.get_place_searched("merci de m'indiquer l'endroit ou se trouve la mairie de caluire lyon toulouse")"""
+new_parser.get_place_searched("je souhaite aller à paris")"""

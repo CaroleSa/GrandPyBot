@@ -1,1 +1,1 @@
-google_key = ""
+google_key = "my_key"

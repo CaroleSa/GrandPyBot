@@ -14,6 +14,7 @@ aimerais
 ainsi
 ait
 allaient
+aller
 allo
 allons
 allô
@@ -133,6 +134,7 @@ contente
 contre
 coucou
 couic
+courir
 crac
 d
 da
@@ -301,6 +303,7 @@ maintenant
 mais
 malgre
 malgré
+marcher
 maximale
 me
 meme
@@ -388,6 +391,7 @@ partant
 particulier
 particulière
 particulièrement
+partir
 pas
 passé
 pendant
@@ -486,6 +490,7 @@ revoici
 revoilà
 rien
 robot
+rouler
 s
 sa
 sacrebleu
@@ -530,6 +535,9 @@ soixante
 son
 sont
 sous
+souhaite
+souhaiter
+souhaites
 souvent
 specifique
 specifiques
