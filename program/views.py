@@ -12,18 +12,18 @@ from config import google_key
 
 
 
-APP = Flask(__name__)
+app = Flask(__name__)
 
 
 
 
-@APP.route('/')
+@app.route('/')
 def index():
     """ display the html web page """
 
     return render_template('index.html', key=google_key)
 
-@APP.route("/process", methods=["POST"])
+@app.route("/process", methods=["POST"])
 def process():
     # get the user's question and return an error message if no result
     question = request.form['question']

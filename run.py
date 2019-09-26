@@ -3,9 +3,9 @@
 
 
 # import de la variable app à partir du fichier __init__
-from program.views import APP
+from program.views import app
 
 # point d'entrée du programme
 if __name__ == "__main__":
-    APP.run(debug=True)
+    app.run(debug=True)
 
