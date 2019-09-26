@@ -46,7 +46,7 @@ class CallApi:
             address = data['candidates'][0]["formatted_address"]
             latitude = data['candidates'][0]["geometry"]["location"]['lat']
             longitude = data['candidates'][0]["geometry"]["location"]['lng']
-            print("google_maps :", name)
+
             return {
                 "name": name,
                 "address": address,
