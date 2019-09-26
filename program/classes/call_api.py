@@ -36,6 +36,7 @@ class CallApi:
         }
         request = requests.get(url=url, params=params)
 
+
         # convert data to json format
         data = request.json()
 
@@ -77,6 +78,7 @@ class CallApi:
 
                 # get the description of the place
                 place_history = p_wiki.summary
+
                 # get index of the point
                 index = place_history.find(".", 200)
                 # reduction of the description, add comment and link
@@ -92,9 +94,12 @@ class CallApi:
 
 
 """ca = CallApi()
-data = ca.call_api_google_maps("lyon")
-print(data)
-name = data.get("name")
 
-data = ca.call_api_wikipedia(name)
+
+data = ca.call_api_google_maps("hhhh")
 print(data)"""
+
+
+
+#data = ca.call_api_wikipedia("OpenClassrooms")
+#print(data)
