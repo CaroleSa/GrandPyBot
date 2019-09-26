@@ -8,19 +8,20 @@ from flask import Flask, render_template, request, jsonify
 import program.classes.parser as p
 import program.classes.call_api as ca
 import random
+from config import google_key
 
 
 
-# import of the configuration variables
 APP = Flask(__name__)
-APP.config.from_object('config')
+
 
 
 
 @APP.route('/')
 def index():
     """ display the html web page """
-    return render_template('index.html')
+
+    return render_template('index.html', key=google_key)
 
 @APP.route("/process", methods=["POST"])
 def process():

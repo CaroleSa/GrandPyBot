@@ -8,3 +8,4 @@ from program.views import APP
 # point d'entrée du programme
 if __name__ == "__main__":
     APP.run(debug=True)
+
