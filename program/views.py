@@ -27,7 +27,7 @@ def index():
 def process():
     # get the user's question and return an error message if no result
     question = request.form['question']
-    if len(question) < 1:
+    if len(question) <= 1:
         text_error_list = ["Tu n'es pas très bavard !", "Dis-moi... où souhaites-tu aller ?",
                             "Euh... oui ?", "Allo ! Il y a quelqu'un ?"]
         random_index = random.randint(0, 3)
