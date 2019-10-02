@@ -1,18 +1,21 @@
 #! /usr/bin/env python3
 # coding: UTF-8
 
+""" Class Parser """
 
 class Parser:
     """ Parse the question of the user """
 
-    def get_place_searched(self, user_question):
+    @classmethod
+    def get_place_searched(cls, user_question):
+        """ get place searched in the user's question """
+
         # remove all capital letters
         user_question = user_question.lower()
 
         # deleting the symbols of the user question
-        with open("program/classes/symbols.txt", "r") as f:
-            file = f.readlines()
-            print(file)
+        with open("program/classes/symbols.txt", "r") as file:
+            file = file.readlines()
             for symbol in file:
                 symbol = symbol.replace("\n", "")
                 user_question = user_question.replace(symbol, " ")
@@ -21,8 +24,8 @@ class Parser:
         list_user_question = user_question.split()
 
         # deleting the common words of the user question
-        with open("program/classes/common_words.txt", "r") as f:
-            file = f.readlines()
+        with open("program/classes/common_words.txt", "r") as file:
+            file = file.readlines()
             for word in file:
                 word = word.replace("\n", "")
                 while word in list_user_question:
@@ -31,6 +34,3 @@ class Parser:
         place = " ".join(list_user_question)
 
         return place
-
-"""new_parser = Parser()
-new_parser.get_place_searched("j'ai ramassé des fleurs")"""

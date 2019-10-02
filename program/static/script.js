@@ -33,12 +33,20 @@ function getQuestionInThread() {
 	            $('#messageThread').append("<p class='textMap' id='message'>" + data.map + "</p>");
                 $("#rowMap").show();
                 var map;
+                var marker;
                 function initMap() {
+                    var LatLng = {lat: data.latitude, lng: data.longitude};
                     map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: data.latitude, lng: data.longitude},
-                    zoom: 18
+                    center: LatLng,
+                    zoom: 15
+                    });
+                    marker = new google.maps.Marker({
+                    position: LatLng,
+                    map: map,
+                    title: 'Hello World!'
                     });
                 }
+
                 initMap();
                 $('#map').css('height','180px');
                 $('#map').css('max-width','100%');
