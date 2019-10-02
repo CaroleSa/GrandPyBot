@@ -31,3 +31,5 @@ class TestParser(TestCase):
     def test_stop_words(self):
         results_stop_words = self.new_parser.get_place_searched("je cherche un lieu")
         self.assertEqual(results_stop_words, "")
+
+unittest.main()

@@ -2,9 +2,9 @@ $('#loader').hide();
 $('#space2').show();
 $("#rowMap").hide();
 
+
 function getQuestionInThread() {
     var $textareaValueElt = $('textarea').val();
-
     $('#messageThread').append("<br><p id='message'><span id='userName'> Utilisateur : <br></span>" + $textareaValueElt + "</p>");
     $(".textMap").remove();
     element = document.getElementById('thread');
@@ -14,25 +14,24 @@ function getQuestionInThread() {
 			type : 'POST',
 			url : '/process'
 	})
+
 	.done(function(data) {
 	    $('#loader').hide();
 	    $('#space2').show();
 
 	    if(data.error){
-
 				$('#messageThread').append("<br><p id='message'><span id='robotName'> GrandPy Bot : <br></span>" + data.error + "</p>");
 				element = document.getElementById('thread');
 	            element.scrollTop = element.scrollHeight;
 				return
-		}if(data.latitude){
 
+		}if(data.latitude){
                 $('#messageThread').append("<br><p id='message'><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "</p>");
                 element = document.getElementById('thread');
 	            element.scrollTop = element.scrollHeight;
 	            $('#messageThread').append("<p id='message'>" + data.history + "</p>");
 	            $('#messageThread').append("<p class='textMap' id='message'>" + data.map + "</p>");
                 $("#rowMap").show();
-
                 var map;
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
@@ -50,33 +49,26 @@ function getQuestionInThread() {
                 $('#map').css('border-bottom',' 5px white inset');
 
                 }else{
-
                     $('#messageThread').append("<br><p id='message'><span id='robotName'> GrandPy Bot : <br></span>" + data.address + "</p>");
                     element = document.getElementById('thread');
 	                element.scrollTop = element.scrollHeight;
 	                $('#messageThread').append("<p id='message'>" + data.history + "<br>" + data.map + "</p>");
                     }
-
-
     });
-
  	$('textarea').val('').change();
 }
 
 
-
 $("button").on('click', function () {
-
     $('#loader').show();
     $('#space2').hide();
     $("#rowMap").hide();
-
     getQuestionInThread();
 });
 
+
 $("textarea").keyup(function(e) {
     if (e.keyCode == 13) {
-
         $('#loader').show();
         $('#space2').hide();
         $("#rowMap").hide();

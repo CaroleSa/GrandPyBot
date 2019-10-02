@@ -23,6 +23,8 @@ class CallApi:
             extract_format=wikipediaapi.ExtractFormat.WIKI
         )
 
+        self.key = google_key
+
     def call_api_google_maps(self, place):
         """ Loading data of the A.P.I. Google Maps and convert to json """
 
@@ -32,7 +34,7 @@ class CallApi:
             'input': place,
             'inputtype': 'textquery',
             'fields': 'name,formatted_address,geometry',
-            'key': google_key
+            'key': self.key
         }
         request = requests.get(url=url, params=params)
 
@@ -54,8 +56,7 @@ class CallApi:
                 "longitude": longitude
             }
 
-        else:
-            return False
+        return False
 
 
 
@@ -63,43 +64,21 @@ class CallApi:
         """ Loading data of the A.P.I. Wikipedia """
         # select wikipedia page
 
-
         p_wiki = self.wiki.page(place)
 
-
-
         if p_wiki.exists() is True:
-            """print(p_wiki.text)"""
+           # display the text if existing wikipedia page : place history
+            # get the page link
+            url = p_wiki.fullurl
 
-            if "Géographie" or "entreprise" or "Histoire" in p_wiki.text:
-                # display the text if existing wikipedia page : place history
-                # get the page link
-                url = p_wiki.fullurl
+            # get the description of the place
+            place_history = p_wiki.summary
 
-                # get the description of the place
-                place_history = p_wiki.summary
+            # get index of the point
+            index = place_history.find(".", 200)
+            # reduction of the description, add comment and link
+            place_history = p_wiki.summary[:index + 1]
 
-                # get index of the point
-                index = place_history.find(".", 200)
-                # reduction of the description, add comment and link
-                place_history = p_wiki.summary[:index + 1]
+            return {"history": place_history, "url": url}
 
-                return {"history": place_history, "url": url}
-
-            else:
-                return False
-
-        else:
-            return False
-
-
-"""ca = CallApi()
-
-
-data = ca.call_api_google_maps("hhhh")
-print(data)"""
-
-
-
-#data = ca.call_api_wikipedia("OpenClassrooms")
-#print(data)
+        return False

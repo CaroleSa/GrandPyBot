@@ -12,6 +12,7 @@ class Parser:
         # deleting the symbols of the user question
         with open("program/classes/symbols.txt", "r") as f:
             file = f.readlines()
+            print(file)
             for symbol in file:
                 symbol = symbol.replace("\n", "")
                 user_question = user_question.replace(symbol, " ")
@@ -32,4 +33,4 @@ class Parser:
         return place
 
 """new_parser = Parser()
-new_parser.get_place_searched("je souhaite aller à paris")"""
+new_parser.get_place_searched("j'ai ramassé des fleurs")"""

@@ -2,13 +2,14 @@ a
 à
 abord
 absolument
+acheter
+acheté
 adresse
 afin
 ah
 ai
 aie
 ailleurs
-aime
 aimerai
 aimerais
 ainsi
@@ -106,6 +107,8 @@ chacune
 chaque
 cher
 cherche
+cherché
+chercher
 chers
 chez
 chiche
@@ -130,11 +133,8 @@ compris
 concernant
 connais
 connaitre
-contente
 contre
-coucou
 couic
-courir
 crac
 d
 da
@@ -303,7 +303,6 @@ maintenant
 mais
 malgre
 malgré
-marcher
 maximale
 me
 meme
@@ -391,7 +390,6 @@ partant
 particulier
 particulière
 particulièrement
-partir
 pas
 passé
 pendant
@@ -478,7 +476,6 @@ recherche
 relative
 relativement
 remarquable
-rencontrer
 rend
 rendre
 restant
@@ -490,7 +487,6 @@ revoici
 revoilà
 rien
 robot
-rouler
 s
 sa
 sacrebleu
@@ -537,7 +533,6 @@ sont
 sous
 souhaite
 souhaiter
-souhaites
 souvent
 specifique
 specifiques
@@ -598,6 +593,7 @@ troisième
 troisièmement
 trop
 trouve
+trouvé
 trouver
 très
 tsoin
@@ -629,13 +625,11 @@ vives
 vlan
 voici
 voilà
-voir
 vont
 vos
 votre
 vous
 vous-mêmes
-vraiment
 vu
 vé
 vôtre
