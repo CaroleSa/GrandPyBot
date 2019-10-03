@@ -4,7 +4,6 @@
 """ Class Parser """
 
 
-
 class Parser:
     """ Parse the question of the user """
 
@@ -17,9 +16,7 @@ class Parser:
 
         # deleting the symbols of the user question
         with open("program/classes/symbols.txt", "r", encoding="cp1252") as file:
-
             file = file.readlines()
-
             for symbol in file:
                 symbol = symbol.replace("\n", "")
                 user_question = user_question.replace(symbol, " ")
@@ -29,9 +26,7 @@ class Parser:
 
         # deleting the common words of the user question
         with open("program/classes/common_words.txt", "r", encoding="cp1252") as file:
-
             file = file.readlines()
-
             for word in file:
                 word = word.replace("\n", "")
                 while word in list_user_question:
