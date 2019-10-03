@@ -8,7 +8,7 @@
 # import
 import requests
 import wikipediaapi
-from config import google_key
+from config import GOOGLE_KEY
 
 
 
@@ -23,7 +23,7 @@ class CallApi:
             extract_format=wikipediaapi.ExtractFormat.WIKI
         )
 
-        self.key = google_key
+        self.key = GOOGLE_KEY
 
     def call_api_google_maps(self, place):
         """ Loading data of the A.P.I. Google Maps and convert to json """
