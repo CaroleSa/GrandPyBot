@@ -12,6 +12,6 @@ Ce programme fonctionne grâce à l'utilisation de l'A.P.I. de Google Maps et de
 
 
 
-**Données configurables :**  
+**Donnée configurable :**  
 Pour permettre au programme de fonctionner, vous devez indiquer dans le fichier config.py
 votre clef Google Maps.
