@@ -1,9 +1,7 @@
 @font-face {
     font-family: 'amadeusregular';
     src: url('fonts/Amadeus-webfont.eot');
-    src: url('fonts/Amadeus-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/Amadeus-webfont.woff') format('woff'),
-         url('fonts/Amadeus-webfont.ttf') format('truetype'),
+    src: url('fonts/Amadeus-webfont.woff') format('woff'),
          url('fonts/Amadeus-webfont.svg#amadeusregular') format('svg');
     font-weight: normal;
     font-style: normal;
@@ -12,9 +10,7 @@
 @font-face {
     font-family: 'saxmonoregular';
     src: url('fonts/saxmono-webfont.eot');
-    src: url('fonts/saxmono-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/saxmono-webfont.woff') format('woff'),
-         url('fonts/saxmono-webfont.ttf') format('truetype'),
+    src: url('fonts/saxmono-webfont.woff') format('woff'),
          url('fonts/saxmono-webfont.svg#saxmonoregular') format('svg');
     font-weight: normal;
     font-style: normal;

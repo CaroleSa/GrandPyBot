@@ -1,9 +1,9 @@
 #! /usr/bin/env python3
 # coding: UTF-8
 
-""" views of the application """
+""" view of the application """
 
-# import library
+# imports
 from flask import Flask, render_template, request, jsonify
 import program.classes.parser as p
 import program.classes.call_api as ca
@@ -19,8 +19,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    """ display the html web page """
-
+    """ display the web page """
     return render_template('index.html', key=GOOGLE_KEY)
 
 @app.route("/process", methods=["POST"])
