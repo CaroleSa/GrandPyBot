@@ -4,8 +4,8 @@
 """ run program """
 
 # import
-from program.views import app
+from program.views import APP
 
 # execute only if run as a script
 if __name__ == "__main__":
-    app.run(debug=True)
+    APP.run(debug=True)
