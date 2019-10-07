@@ -5,7 +5,7 @@
 
 
 
-# import
+# imports
 import requests
 import wikipediaapi
 from config import GOOGLE_KEY
@@ -13,22 +13,24 @@ from config import GOOGLE_KEY
 
 
 class CallApi:
-    """ Call A.P.I. Google maps """
+    """ Call A.P.I. Google maps and Wikipédia """
+
 
     def __init__(self):
-
-        # select language and format
+        # select the language and the format
         self.wiki = wikipediaapi.Wikipedia(
             language='fr',
             extract_format=wikipediaapi.ExtractFormat.WIKI
         )
 
+        # get the google key
         self.key = GOOGLE_KEY
 
-    def call_api_google_maps(self, place):
-        """ Loading data of the A.P.I. Google Maps and convert to json """
 
-        # request and getting place data
+    def call_api_google_maps(self, place):
+        """ Get the data of the A.P.I. Google Maps and convert to json """
+
+        # request and getting the place data
         url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?"
         params = {
             'input': place,
@@ -38,10 +40,10 @@ class CallApi:
         }
         request = requests.get(url=url, params=params)
 
-
         # convert data to json format
         data = request.json()
 
+        # if the data exists
         if data.get("status") == "OK":
             # get datas
             name = data['candidates'][0]["name"]
@@ -56,19 +58,19 @@ class CallApi:
                 "longitude": longitude
             }
 
+        # if the data does not exist
         return False
 
 
-
     def call_api_wikipedia(self, place):
-        """ Loading data of the A.P.I. Wikipedia """
-        # select wikipedia page
+        """ Get the data of the A.P.I. Wikipedia """
 
+        # select the Wikipédia page
         p_wiki = self.wiki.page(place)
 
+        # if the page exists
         if p_wiki.exists() is True:
-           # display the text if existing wikipedia page : place history
-            # get the page link
+            # get the link
             url = p_wiki.fullurl
 
             # get the description of the place
@@ -76,9 +78,10 @@ class CallApi:
 
             # get index of the point
             index = place_history.find(".", 200)
-            # reduction of the description, add comment and link
+            # reduction of the description
             place_history = p_wiki.summary[:index + 1]
 
             return {"history": place_history, "url": url}
 
+        # if the page does not exist
         return False
