@@ -1,10 +1,15 @@
 #! /usr/bin/env python3
 # coding: UTF-8
 
-""" parser.py test """
+""" Class TestParser """
 
+
+
+# imports
 from unittest import TestCase
 from program.classes import parser as pa
+
+
 
 class TestParser(TestCase):
     """ parser tests """
