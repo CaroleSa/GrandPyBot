@@ -7,15 +7,15 @@
 
 # imports
 from unittest import TestCase
-from program.classes import parser as pa
+from program.classes.parser import Parser
 
 
 
 class TestParser(TestCase):
-    """ parser tests """
+    """ Parser tests """
 
     def setUp(self):
-        self.new_parser = pa.Parser()
+        self.new_parser = Parser()
 
     def test_empty(self):
         """ test if not question : the empty string """
