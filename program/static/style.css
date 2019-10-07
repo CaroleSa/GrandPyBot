@@ -34,7 +34,7 @@
 }
 
 body{
-    background-image:url("images/fond1.png");
+    background-image:url("images/background1.png");
     background-size: cover;
 }
 
@@ -120,7 +120,7 @@ textarea{
 @media screen and (max-width : 1300px)
 {
     body{
-    background-image:url("images/fond2.png");
+    background-image:url("images/background2.png");
     background-size: cover;
     }
 }
