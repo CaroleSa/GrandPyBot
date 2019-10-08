@@ -9,8 +9,8 @@
 # imports
 import random
 from flask import Flask, render_template, request, jsonify
-from program.classes.parser import Parser
-from program.classes.call_api import CallApi
+from webapp.classes.parser import Parser
+from webapp.classes.call_api import CallApi
 from config import GOOGLE_KEY
 
 APP = Flask(__name__)

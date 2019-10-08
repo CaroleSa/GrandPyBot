@@ -4,7 +4,7 @@
 """ run program """
 
 # import
-from program.views import APP
+from webapp.views import APP
 
 # execute only if run as a script
 if __name__ == "__main__":

@@ -4,4 +4,4 @@
 """ __init__ file """
 
 # import
-from program.views import APP
+from webapp.views import APP

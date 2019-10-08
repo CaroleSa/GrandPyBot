@@ -7,7 +7,7 @@
 
 # imports
 from unittest import TestCase
-from program.classes.parser import Parser
+from webapp.classes.parser import Parser
 
 
 

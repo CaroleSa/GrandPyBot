@@ -8,7 +8,7 @@
 # imports
 from unittest.mock import patch
 from unittest import TestCase
-from program.classes.call_api import CallApi
+from webapp.classes.call_api import CallApi
 
 
 
@@ -20,7 +20,7 @@ class TestApi(TestCase):
         self.new_call_api = CallApi()
 
 
-    @patch('program.classes.call_api.requests.get')
+    @patch('webapp.classes.call_api.requests.get')
     def test_no_return_google_api(self, mock_api):
         """ Test the False return of the call_api_google_maps function """
         result_json = {'candidates': [], 'status': 'ZERO_RESULTS'}
@@ -31,7 +31,7 @@ class TestApi(TestCase):
         self.assertEqual(self.new_call_api.call_api_google_maps('hhhhh'), result)
 
 
-    @patch('program.classes.call_api.requests.get')
+    @patch('webapp.classes.call_api.requests.get')
     def test_return_google_api(self, mock_api):
         """ Test the return of the call_api_google_maps function """
         result_json = {'candidates': [{'formatted_address': 'Lyon, France',
@@ -51,9 +51,9 @@ class TestApi(TestCase):
         self.assertEqual(self.new_call_api.call_api_google_maps('lyon'), result)
 
 
-    @patch('program.classes.call_api.wikipediaapi.Wikipedia.page.fullurl')
-    @patch('program.classes.call_api.wikipediaapi.Wikipedia.page.summary')
-    @patch("program.classes.call_api.wikipediaapi.Wikipedia.page")
+    @patch('webapp.classes.call_api.wikipediaapi.Wikipedia.page.fullurl')
+    @patch('webapp.classes.call_api.wikipediaapi.Wikipedia.page.summary')
+    @patch("webapp.classes.call_api.wikipediaapi.Wikipedia.page")
     def test_return_wikipedia_api(self, mock_url, mock_summary, mock_page):
         """ Test the return of the call_api_wikipedia function """
         if mock_page is True:
@@ -73,7 +73,7 @@ class TestApi(TestCase):
             self.assertEqual(self.new_call_api.call_api_wikipedia('OpenClassrooms'), result)
 
 
-    @patch("program.classes.call_api.wikipediaapi.Wikipedia.page")
+    @patch("webapp.classes.call_api.wikipediaapi.Wikipedia.page")
     def test_no_return_wikipedia_api(self, mock_page):
         """ Test the False return of the call_api_wikipedia function """
         if mock_page is False:
